@@ -1,1 +1,1305 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Swapnil Pawar — ERPNext & Frappe Full Stack Developer</title>
+<meta name="description" content="5+ years ERPNext, Frappe, Python, React.js, Flutter, Vue.js developer. Custom ERP, HRMS, CRM implementations for SMEs and enterprises."/>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+<style>
+/* Load Google Fonts non-blocking — page works perfectly without them */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,300&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+/* ── SYSTEM FONT FALLBACKS (work 100% offline) ── */
+body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,Arial,sans-serif!important}
+h1,h2,h3,.hero-h1,.sec-title,.hstat-n,.cm-n,.kpi-n,.fvs-n,.fv-title,.hc-metric-v,.hc-name,.hc-live,.nav-brand{font-family:'Fraunces',Georgia,'Times New Roman',serif!important}
+.sec-label,.htag,.sp,.ct,.step-num,.fv-eyebrow,.hc-sec-label,.mono{font-family:'JetBrains Mono','Courier New',Courier,monospace!important}
+/* ── REVEAL: always visible, no JS needed ── */
+.reveal{opacity:1!important;transform:none!important;visibility:visible!important;transition:none!important}
+</style>
+<style>
+/* ── RESET & VARS ───────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --navy:#0B1D35; --blue:#1D4ED8; --sky:#3B82F6;
+  --indigo:#4338CA; --violet:#7C3AED;
+  --gold:#F59E0B; --amber:#D97706;
+  --green:#059669; --teal:#0D9488;
+  --rose:#E11D48; --orange:#EA580C;
+  --cream:#F7F5F1; --white:#FFFFFF;
+  --ink:#0F172A; --gray:#64748B; --lgray:#94A3B8;
+  --border:#E2E8F0; --card:#FFFFFF;
+  --r:16px; --shadow:0 4px 24px rgba(11,29,53,.08);
+  --shadow-lg:0 16px 56px rgba(11,29,53,.14);
+}
+body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;line-height:1.6}
+img{display:block;max-width:100%}
+a{text-decoration:none}
+
+/* ── UTILITY ────────────────────────────────────── */
+.mono{font-family:'JetBrains Mono','Courier New',monospace}
+.serif{font-family:'Fraunces',Georgia,serif}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:100px;font-size:11.5px;font-weight:600;letter-spacing:.3px}
+.chip-blue{background:rgba(29,78,216,.08);border:1px solid rgba(29,78,216,.18);color:var(--blue)}
+.chip-green{background:rgba(5,150,105,.08);border:1px solid rgba(5,150,105,.18);color:var(--green)}
+.chip-gold{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);color:var(--amber)}
+.chip-violet{background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.18);color:var(--violet)}
+.sec-label{font-family:'JetBrains Mono','Courier New',monospace;font-size:11px;color:var(--blue);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:10px}
+.sec-title{font-family:'Fraunces',Georgia,serif;font-size:40px;font-weight:900;color:var(--navy);letter-spacing:-1.5px;line-height:1.08;margin-bottom:10px}
+.sec-sub{font-size:15px;color:var(--gray);line-height:1.75;max-width:520px;margin-bottom:52px}
+section{padding:88px 48px}
+.inner{max-width:1140px;margin:0 auto}
+
+/* ── NAV ────────────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(247,245,241,.93);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(11,29,53,.07)}
+.nav-brand{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:19px;color:var(--navy);letter-spacing:-.5px}
+.nav-links{display:flex;gap:30px;list-style:none;align-items:center}
+.nav-links a{font-size:13px;font-weight:500;color:var(--gray);transition:color .2s}
+.nav-links a:hover{color:var(--blue)}
+.nav-cta{background:var(--navy)!important;color:white!important;padding:8px 20px;border-radius:8px;font-weight:600!important}
+.nav-cta:hover{background:var(--blue)!important}
+.nav-wa{background:#25D366!important;color:white!important;padding:8px 16px;border-radius:8px;font-weight:600!important;display:flex;align-items:center;gap:6px}
+
+/* ── HERO ───────────────────────────────────────── */
+#hero{padding:100px 48px 60px;position:relative;overflow:hidden;background:var(--cream)}
+.hero-mesh{position:absolute;top:0;right:0;bottom:0;left:0;z-index:0;background:radial-gradient(ellipse 65% 55% at 75% 35%,rgba(29,78,216,.07) 0%,transparent 65%),radial-gradient(ellipse 45% 45% at 10% 70%,rgba(245,158,11,.05) 0%,transparent 55%)}
+.hero-dots{position:absolute;top:0;right:0;bottom:0;left:0;z-index:0;background-image:radial-gradient(rgba(11,29,53,.06) 1.2px,transparent 1.2px);background-size:28px 28px;-webkit-mask-image:radial-gradient(ellipse 75% 75% at 50% 50%,black 20%,transparent 100%)}
+.hero-inner{position:relative;z-index:1;max-width:1140px;margin:0 auto;width:100%;display:flex;flex-wrap:wrap;gap:48px;align-items:center}
+.hero-avail{display:inline-flex;align-items:center;gap:8px;background:rgba(5,150,105,.08);border:1px solid rgba(5,150,105,.2);color:var(--green);border-radius:100px;padding:5px 14px;font-size:11.5px;font-weight:700;letter-spacing:.4px;margin-bottom:22px}
+.pulse{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(1.5)}}
+.hero-h1{font-family:'Fraunces',Georgia,serif;font-size:52px;font-weight:900;line-height:1.06;letter-spacing:-2px;color:var(--navy);margin-bottom:18px}
+.hero-h1 .hl{color:var(--blue)}
+.hero-p{font-size:17px;font-weight:300;color:var(--gray);line-height:1.75;max-width:520px;margin-bottom:28px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.htag{background:var(--white);border:1px solid var(--border);padding:5px 12px;border-radius:6px;font-size:11.5px;font-weight:600;color:var(--ink);font-family:'JetBrains Mono','Courier New',monospace}
+.hero-btns{display:flex;gap:12px;margin-bottom:52px;flex-wrap:wrap}
+.btn-p{background:var(--navy);color:white;padding:13px 26px;border-radius:9px;font-size:14px;font-weight:700;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-p:hover{background:var(--blue);transform:translateY(-1px);box-shadow:0 8px 24px rgba(29,78,216,.3)}
+.btn-s{background:white;color:var(--navy);border:1.5px solid var(--border);padding:13px 26px;border-radius:9px;font-size:14px;font-weight:600;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-s:hover{border-color:var(--blue);color:var(--blue)}
+.btn-wa{background:#25D366;color:white;padding:13px 26px;border-radius:9px;font-size:14px;font-weight:700;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-wa:hover{background:#1da851;transform:translateY(-1px)}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:12px;overflow:hidden}
+.hstat{background:var(--white);padding:18px 14px}
+.hstat-n{font-family:'Fraunces',Georgia,serif;font-size:28px;font-weight:900;color:var(--navy);line-height:1}
+.hstat-l{font-size:11px;color:var(--lgray);margin-top:4px;font-weight:500}
+
+/* hero card */
+.hero-card{background:var(--navy);border-radius:20px;padding:32px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+.hero-card::before{content:'';position:absolute;top:0;right:0;bottom:0;left:0;background:radial-gradient(circle at 80% 10%,rgba(245,158,11,.15) 0%,transparent 55%)}
+.hc-rel{position:relative;z-index:1}
+.hc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.hc-name{font-family:'Fraunces',Georgia,serif;font-size:18px;font-weight:700;color:white}
+.hc-live{background:rgba(5,150,105,.25);border:1px solid rgba(5,150,105,.4);color:#34D399;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.5px}
+.hc-metric{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px;margin-bottom:10px}
+.hc-metric-l{font-size:9.5px;color:rgba(255,255,255,.4);letter-spacing:.5px;text-transform:uppercase;margin-bottom:5px}
+.hc-metric-v{font-family:'Fraunces',Georgia,serif;font-size:22px;font-weight:700;color:white;line-height:1}
+.hc-metric-s{font-size:10.5px;color:rgba(255,255,255,.4);margin-top:2px}
+.hc-2col{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.hc-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:11.5px}
+.hc-row:last-child{border-bottom:none}
+.hc-rl{color:rgba(255,255,255,.45)}
+.hc-rr{color:white;font-weight:600}
+.sdot{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:5px}
+.hc-sec-label{font-size:9.5px;color:rgba(255,255,255,.3);letter-spacing:.8px;text-transform:uppercase;margin-bottom:7px;margin-top:4px}
+
+/* ── ABOUT ──────────────────────────────────────── */
+#about{background:var(--navy);padding:80px 48px}
+.about-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.about-text .sec-label{color:var(--gold)}
+.about-text .sec-title{color:white}
+.about-text p{font-size:15px;color:rgba(255,255,255,.6);line-height:1.8;margin-bottom:16px}
+.about-text p strong{color:white;font-weight:600}
+.about-text p:last-of-type{margin-bottom:28px}
+.about-links{display:flex;gap:12px;flex-wrap:wrap}
+.about-link{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.8);padding:10px 18px;border-radius:9px;font-size:13px;font-weight:600;transition:all .2s}
+.about-link:hover{background:rgba(255,255,255,.12);color:white}
+.about-right{display:flex;flex-direction:column;gap:14px}
+.about-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:24px}
+.about-card h4{font-size:13px;font-weight:700;color:white;margin-bottom:14px;letter-spacing:.2px}
+.ind-tags{display:flex;flex-wrap:wrap;gap:8px}
+.ind-tag{background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);padding:5px 12px;border-radius:6px;font-size:12px;font-weight:500}
+.focus-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.focus-list li{font-size:13px;color:rgba(255,255,255,.6);display:flex;gap:10px;align-items:flex-start;line-height:1.55}
+.focus-list li::before{content:'→';color:var(--gold);font-weight:700;flex-shrink:0;margin-top:1px}
+.avail-strip{background:rgba(5,150,105,.12);border:1px solid rgba(5,150,105,.25);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:14px}
+.avail-dot{width:10px;height:10px;border-radius:50%;background:var(--green);flex-shrink:0;animation:pulse 2s infinite}
+.avail-strip p{font-size:13px;color:rgba(255,255,255,.75);line-height:1.5}
+.avail-strip strong{color:white}
+
+/* ── SKILLS ─────────────────────────────────────── */
+#skills{background:var(--white)}
+.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.skill-card{background:var(--cream);border:1px solid var(--border);border-radius:14px;padding:24px 20px;transition:all .2s}
+.skill-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:rgba(29,78,216,.2)}
+.skill-ic{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px}
+.skill-card h4{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px}
+.skill-pills{display:flex;flex-wrap:wrap;gap:6px}
+.sp{background:white;border:1px solid var(--border);color:var(--gray);padding:3px 9px;border-radius:4px;font-size:11px;font-weight:500;font-family:'JetBrains Mono','Courier New',monospace}
+
+/* ── CASE STUDIES ───────────────────────────────── */
+#cases{background:var(--cream)}
+.case-grid{display:flex;flex-direction:column;gap:48px}
+.case-card{background:var(--white);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:box-shadow .2s}
+.case-card:hover{box-shadow:var(--shadow-lg)}
+.case-top{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.case-info{padding:40px 40px 40px;border-right:1px solid var(--border)}
+.case-tag{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.case-info h3{font-family:'Fraunces',Georgia,serif;font-size:26px;font-weight:900;color:var(--navy);letter-spacing:-.8px;line-height:1.2;margin-bottom:12px}
+.case-info .problem{font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:16px;padding:12px 14px;background:rgba(245,158,11,.06);border-left:3px solid var(--gold);border-radius:0 6px 6px 0}
+.case-info .solution{font-size:14px;color:var(--gray);line-height:1.75;margin-bottom:20px}
+.case-tech{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
+.ct{background:rgba(29,78,216,.07);border:1px solid rgba(29,78,216,.14);color:var(--blue);padding:4px 10px;border-radius:5px;font-size:11px;font-weight:600;font-family:'JetBrains Mono','Courier New',monospace}
+.case-link{display:inline-flex;align-items:center;gap:7px;color:var(--blue);font-size:13.5px;font-weight:700;border-bottom:2px solid rgba(29,78,216,.2);padding-bottom:2px;transition:border-color .2s}
+.case-link:hover{border-color:var(--blue)}
+.case-metrics{padding:40px;display:flex;flex-direction:column;justify-content:center;gap:16px}
+.case-metric{padding:18px 16px;border-radius:12px;transition:transform .2s}
+.case-metric:hover{transform:translateX(3px)}
+.cm-n{font-family:'Fraunces',Georgia,serif;font-size:36px;font-weight:900;line-height:1}
+.cm-l{font-size:13px;font-weight:700;margin:4px 0 3px}
+.cm-d{font-size:12px;line-height:1.55}
+.case-metric.c1{background:linear-gradient(135deg,#EFF6FF,#DBEAFE)}.case-metric.c1 .cm-n,.case-metric.c1 .cm-l{color:var(--blue)}.case-metric.c1 .cm-d{color:#3B82F6}
+.case-metric.c2{background:linear-gradient(135deg,#F0FDF4,#DCFCE7)}.case-metric.c2 .cm-n,.case-metric.c2 .cm-l{color:var(--green)}.case-metric.c2 .cm-d{color:#34D399}
+.case-metric.c3{background:linear-gradient(135deg,#FFF7ED,#FED7AA)}.case-metric.c3 .cm-n,.case-metric.c3 .cm-l{color:var(--orange)}.case-metric.c3 .cm-d{color:#FB923C}
+.case-metric.c4{background:linear-gradient(135deg,#F5F3FF,#EDE9FE)}.case-metric.c4 .cm-n,.case-metric.c4 .cm-l{color:var(--violet)}.case-metric.c4 .cm-d{color:#A78BFA}
+
+/* ── FEATURED PROJECT ───────────────────────────── */
+#featured{background:var(--white)}
+.feat-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.feat-visual{border-radius:18px;overflow:hidden;background:linear-gradient(140deg,#0B1D35 0%,#1e3a6e 55%,#1D4ED8 100%);padding:40px;min-height:480px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow-lg);position:relative}
+.feat-visual::before{content:'';position:absolute;top:0;right:0;bottom:0;left:0;background:radial-gradient(circle at 70% 15%,rgba(245,158,11,.18) 0%,transparent 45%)}
+.fv-rel{position:relative;z-index:1;display:flex;flex-direction:column;height:100%;justify-content:space-between}
+.fv-eyebrow{font-family:'JetBrains Mono','Courier New',monospace;font-size:10px;color:rgba(255,255,255,.4);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.fv-title{font-family:'Fraunces',Georgia,serif;font-size:38px;font-weight:900;color:white;line-height:1.05;letter-spacing:-1px}
+.fv-title span{color:var(--gold)}
+.fv-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fvs{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px}
+.fvs-n{font-family:'Fraunces',Georgia,serif;font-size:22px;font-weight:900;color:white;line-height:1}
+.fvs-l{font-size:10.5px;color:rgba(255,255,255,.45);margin-top:3px}
+.fv-platforms{display:flex;flex-wrap:wrap;gap:7px}
+.fvp{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600}
+.feat-info h2{font-family:'Fraunces',Georgia,serif;font-size:34px;font-weight:900;color:var(--navy);letter-spacing:-1px;line-height:1.15;margin-bottom:14px}
+.feat-info>p{font-size:14.5px;color:var(--gray);line-height:1.75;margin-bottom:18px}
+.feat-bullets{list-style:none;margin-bottom:28px}
+.feat-bullets li{display:flex;align-items:flex-start;gap:11px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13.5px;color:var(--gray);line-height:1.6}
+.feat-bullets li:last-child{border-bottom:none}
+.feat-bullets li::before{content:'→';color:var(--blue);font-weight:700;flex-shrink:0;margin-top:1px}
+.tech-row{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:28px}
+
+/* ── HRMS SECTION ───────────────────────────────── */
+#hrms{background:var(--cream)}
+.hrms-intro{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;margin-bottom:64px}
+.hrms-intro-text h2{font-family:'Fraunces',Georgia,serif;font-size:36px;font-weight:900;color:var(--navy);letter-spacing:-1.5px;line-height:1.1;margin-bottom:14px}
+.hrms-intro-text h2 em{font-style:normal;color:var(--blue)}
+.hrms-intro-text p{font-size:14.5px;color:var(--gray);line-height:1.75;margin-bottom:20px}
+.target-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.hrms-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border-radius:12px;overflow:hidden}
+.kpi{background:white;padding:18px 14px;text-align:center}
+.kpi-n{font-family:'Fraunces',Georgia,serif;font-size:28px;font-weight:900;color:var(--blue);line-height:1}
+.kpi-l{font-size:11px;color:var(--lgray);margin-top:4px;font-weight:500}
+/* pain */
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:60px}
+.pain-card{background:white;border:1px solid #FFE0B2;border-radius:13px;padding:22px 18px;position:relative;overflow:hidden;transition:all .2s}
+.pain-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),#FB923C)}
+.pain-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.pain-emoji{font-size:24px;margin-bottom:10px}
+.pain-card h4{font-size:13.5px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.pain-card p{font-size:12.5px;color:var(--gray);line-height:1.65;margin-bottom:12px}
+.pain-solve{font-size:12px;font-weight:700;color:var(--green);background:#ECFDF5;border-radius:6px;padding:5px 10px;display:inline-flex;align-items:center;gap:5px}
+/* lifecycle */
+.lifecycle{display:flex;overflow-x:auto;gap:0;margin:40px 0 56px;padding-bottom:4px}
+.lcs{flex:1;min-width:130px;background:white;border:1px solid var(--border);padding:20px 14px;text-align:center;position:relative;transition:all .2s}
+.lcs:first-child{border-radius:12px 0 0 12px}
+.lcs:last-child{border-radius:0 12px 12px 0}
+.lcs:not(:last-child)::after{content:'›';position:absolute;right:-11px;top:50%;transform:translateY(-50%);width:22px;height:22px;background:var(--blue);color:white;border-radius:50%;font-size:13px;font-weight:900;line-height:22px;text-align:center;z-index:2}
+.lcs:hover{background:#EEF4FF;border-color:var(--blue);z-index:1}
+.lcs-icon{font-size:22px;margin-bottom:7px}
+.lcs-t{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:3px}
+.lcs-d{font-size:10.5px;color:var(--lgray);line-height:1.5}
+/* module tabs */
+.htabs{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:24px}
+.htab{background:var(--white);border:1.5px solid var(--border);color:var(--gray);padding:7px 15px;border-radius:7px;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}
+.htab.active,.htab:hover{background:var(--navy);border-color:var(--navy);color:white}
+.htab-c{display:none}
+.htab-c.active{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start;animation:fadeUp .3s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.hfeats{display:flex;flex-direction:column;gap:2px}
+.hfeat{display:flex;gap:12px;padding:13px;border-radius:9px;transition:background .2s;cursor:default}
+.hfeat:hover{background:rgba(29,78,216,.04)}
+.hfeat-ic{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.hfeat h5{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:3px}
+.hfeat p{font-size:12px;color:var(--gray);line-height:1.6}
+/* mock */
+.hmock{background:linear-gradient(155deg,var(--navy) 0%,#1e3a5f 100%);border-radius:14px;padding:24px;box-shadow:var(--shadow-lg);min-height:360px;display:flex;flex-direction:column;gap:12px}
+.hm-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+.hm-title{font-family:'Fraunces',Georgia,serif;font-size:15px;font-weight:700;color:white}
+.hm-badge{background:rgba(5,150,105,.2);border:1px solid rgba(5,150,105,.35);color:#34D399;padding:3px 9px;border-radius:20px;font-size:9.5px;font-weight:700;letter-spacing:.5px}
+.hm-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:12px 14px}
+.hm-lbl{font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.5px;text-transform:uppercase;margin-bottom:4px}
+.hm-val{font-family:'Fraunces',Georgia,serif;font-size:20px;font-weight:700;color:white;line-height:1}
+.hm-sub{font-size:10px;color:rgba(255,255,255,.4);margin-top:2px}
+.hm-2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hm-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:11px}
+.hm-row:last-child{border-bottom:none}
+.hm-rl{color:rgba(255,255,255,.45)}
+.hm-rr{color:white;font-weight:600}
+.hm-bwrap .hm-bl{display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,.4);margin-bottom:4px}
+.hm-bt{height:5px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
+.hm-bf{height:100%;border-radius:3px}
+/* roi strip */
+.roi-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:60px}
+.roi-tile{border-radius:14px;padding:26px 22px;transition:transform .2s}
+.roi-tile:hover{transform:translateY(-3px)}
+.roi-tile.bl{background:linear-gradient(135deg,#EFF6FF,#DBEAFE)}
+.roi-tile.gr{background:linear-gradient(135deg,#F0FDF4,#DCFCE7)}
+.roi-tile.vi{background:linear-gradient(135deg,#F5F3FF,#EDE9FE)}
+.roi-tile.am{background:linear-gradient(135deg,#FFFBEB,#FEF3C7)}
+.roi-tile.cy{background:linear-gradient(135deg,#F0F9FF,#E0F2FE)}
+.roi-tile.ro{background:linear-gradient(135deg,#FFF1F2,#FFE4E6)}
+.roi-n{font-family:'Fraunces',Georgia,serif;font-size:40px;font-weight:900;line-height:1;margin-bottom:7px}
+.bl .roi-n{color:var(--blue)}.gr .roi-n{color:var(--green)}.vi .roi-n{color:var(--violet)}.am .roi-n{color:var(--amber)}.cy .roi-n{color:#0284C7}.ro .roi-n{color:var(--rose)}
+.roi-t{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:5px}
+.roi-d{font-size:12.5px;color:var(--gray);line-height:1.65}
+
+/* ── ALL PROJECTS ───────────────────────────────── */
+#projects{background:var(--white)}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.proj-card{background:var(--cream);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .25s}
+.proj-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:rgba(29,78,216,.15)}
+.proj-top{padding:24px 24px 18px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start}
+.proj-ind{font-family:'JetBrains Mono','Courier New',monospace;font-size:9.5px;color:var(--lgray);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:7px}
+.proj-card h3{font-family:'Fraunces',Georgia,serif;font-size:19px;font-weight:900;color:var(--navy);line-height:1.25;letter-spacing:-.4px}
+.proj-ico{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;margin-left:10px}
+.proj-body{padding:18px 24px 22px}
+.proj-body p{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:14px}
+.proj-hl{list-style:none;margin-bottom:14px}
+.proj-hl li{font-size:12px;color:var(--gray);padding:4px 0;display:flex;gap:8px;align-items:flex-start;line-height:1.55}
+.proj-hl li::before{content:'✦';color:var(--gold);font-size:9px;margin-top:2px;flex-shrink:0}
+.proj-tech{display:flex;flex-wrap:wrap;gap:5px}
+.proj-tech span{background:white;border:1px solid var(--border);color:var(--gray);padding:2px 8px;border-radius:4px;font-size:10.5px;font-weight:500;font-family:'JetBrains Mono','Courier New',monospace}
+
+/* ── ENGAGEMENT MODELS ──────────────────────────── */
+#engage{background:var(--cream)}
+.engage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.engage-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:32px 28px;position:relative;transition:all .2s}
+.engage-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.engage-card.featured-engage{border-color:var(--blue);background:linear-gradient(160deg,#EFF6FF 0%,white 60%)}
+.engage-card.featured-engage::before{content:'Most Popular';position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--blue);color:white;font-size:10px;font-weight:700;padding:3px 14px;border-radius:0 0 8px 8px;letter-spacing:.5px}
+.engage-icon{font-size:28px;margin-bottom:16px}
+.engage-card h3{font-family:'Fraunces',Georgia,serif;font-size:22px;font-weight:900;color:var(--navy);margin-bottom:6px}
+.engage-card .engage-sub{font-size:13px;color:var(--gray);margin-bottom:20px;line-height:1.6}
+.engage-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:24px}
+.engage-list li{font-size:13px;color:var(--gray);display:flex;gap:10px;align-items:flex-start;line-height:1.55}
+.engage-list li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+.engage-cta{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:700;color:var(--blue);border-bottom:2px solid rgba(29,78,216,.2);padding-bottom:2px;transition:border-color .2s}
+.engage-cta:hover{border-color:var(--blue)}
+
+/* ── PROCESS ────────────────────────────────────── */
+#process{background:var(--white)}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);border-radius:14px;overflow:hidden}
+.step{background:var(--white);padding:28px 22px;position:relative;transition:background .2s}
+.step:hover{background:#FAFBFF}
+.step-num{font-family:'JetBrains Mono','Courier New',monospace;font-size:10.5px;color:var(--lgray);letter-spacing:1px;margin-bottom:18px}
+.step-ico{width:44px;height:44px;border-radius:10px;background:rgba(29,78,216,.07);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px}
+.step h4{font-size:14.5px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.step p{font-size:12.5px;color:var(--gray);line-height:1.65}
+
+/* ── FAQ ────────────────────────────────────────── */
+#faq{background:var(--cream)}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.faq-item{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.faq-q{width:100%;background:none;border:none;padding:20px 22px;text-align:left;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background .2s}
+.faq-q:hover{background:#F8F9FF}
+.faq-arrow{font-size:18px;color:var(--blue);transition:transform .3s;flex-shrink:0}
+.faq-item.open .faq-arrow{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
+.faq-item.open .faq-a{max-height:200px}
+.faq-a p{padding:0 22px 18px;font-size:13.5px;color:var(--gray);line-height:1.75}
+
+/* ── CONTACT ────────────────────────────────────── */
+#contact{background:var(--navy);text-align:center;position:relative;overflow:hidden}
+#contact::before{content:'';position:absolute;top:0;right:0;bottom:0;left:0;background:radial-gradient(ellipse 55% 65% at 50% 50%,rgba(29,78,216,.28) 0%,transparent 68%)}
+.contact-inner{position:relative;z-index:1;max-width:680px;margin:0 auto}
+#contact .sec-label{color:var(--gold)}
+#contact .sec-title{color:white;margin-bottom:10px}
+#contact .sec-sub{color:rgba(255,255,255,.5);margin:0 auto 48px}
+.contact-cards{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:32px}
+.cc{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:20px 26px;display:flex;align-items:center;gap:14px;text-decoration:none;transition:all .2s;min-width:200px}
+.cc:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+.cc-ico{width:42px;height:42px;border-radius:9px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.cc-lbl{font-size:10px;color:rgba(255,255,255,.4);margin-bottom:3px;letter-spacing:.5px}
+.cc-val{font-size:13.5px;font-weight:700;color:white}
+.wa-big{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:white;padding:16px 32px;border-radius:12px;font-size:15px;font-weight:700;margin-top:8px;transition:all .2s}
+.wa-big:hover{background:#1da851;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.35)}
+
+/* ── FOOTER ─────────────────────────────────────── */
+footer{background:#060F1C;padding:22px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+footer p{font-size:12px;color:rgba(255,255,255,.3)}
+footer span{font-size:12px;color:rgba(255,255,255,.15)}
+
+/* ── REVEAL ─────────────────────────────────────── */
+.reveal{opacity:1;transform:none;transition:opacity .55s ease,transform .55s ease}
+.reveal.on{opacity:1;transform:none}
+
+/* ── RESPONSIVE ─────────────────────────────────── */
+@media(max-width:1024px){
+  .skills-grid{grid-template-columns:repeat(2,1fr)}
+  .proj-grid{grid-template-columns:1fr 1fr}
+  .case-top{grid-template-columns:1fr}
+  .case-info{border-right:none;border-bottom:1px solid var(--border)}
+  .case-metrics{flex-direction:row;flex-wrap:wrap}
+  .case-metric{flex:1;min-width:160px}
+  .engage-grid{grid-template-columns:1fr}
+  .process-steps{grid-template-columns:1fr 1fr}
+}
+@media(max-width:900px){
+  nav{padding:0 20px}
+  .nav-links{display:none}
+  section{padding:64px 20px}
+  #hero{padding:90px 20px 52px}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .about-inner{grid-template-columns:1fr}
+  .feat-wrap{grid-template-columns:1fr}
+  .feat-visual{min-height:300px}
+  .hrms-intro{grid-template-columns:1fr}
+  .pain-grid{grid-template-columns:1fr 1fr}
+  .htab-c.active{grid-template-columns:1fr}
+  .hmock{display:none}
+  .roi-strip{grid-template-columns:1fr 1fr}
+  .faq-grid{grid-template-columns:1fr}
+  footer{padding:18px 20px}
+}
+@media(max-width:600px){
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .pain-grid{grid-template-columns:1fr}
+  .roi-strip{grid-template-columns:1fr}
+  .proj-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr 1fr}
+  .process-steps{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-brand">Swapnil Pawar</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#cases">Case Studies</a></li>
+    <li><a href="#hrms">HRMS</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#engage">Hire Me</a></li>
+    <li><a href="https://wa.me/917218018485" target="_blank" class="nav-wa">💬 WhatsApp</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-inner inner">
+    <div>
+      <div class="hero-avail"><span class="pulse"></span> Open to freelance &amp; full-time opportunities</div>
+      <h1 class="hero-h1">ERPNext &amp; Frappe<br/><span class="hl">Full Stack Developer</span><br/>— 5+ Years</h1>
+      <p class="hero-p">I build complete ERP systems, custom HR &amp; payroll platforms, CRM solutions, and cross-platform mobile apps — from requirement to production, owned end-to-end.</p>
+      <div class="hero-tags">
+        <span class="htag">Python</span><span class="htag">React.js</span><span class="htag">Vue.js</span>
+        <span class="htag">Flutter</span><span class="htag">ERPNext</span><span class="htag">Frappe</span>
+        <span class="htag">Frappe CRM</span><span class="htag">MariaDB</span><span class="htag">AWS · Azure</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#cases" class="btn-p">View Case Studies ↓</a>
+        <a href="https://wa.me/917218018485" target="_blank" class="btn-wa">💬 WhatsApp Me</a>
+        <a href="#engage" class="btn-s">See Engagement Models</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="hstat-n">5+</div><div class="hstat-l">Years Experience</div></div>
+        <div class="hstat"><div class="hstat-n">15+</div><div class="hstat-l">Projects Delivered</div></div>
+        <div class="hstat"><div class="hstat-n">4</div><div class="hstat-l">Industries Served</div></div>
+        <div class="hstat"><div class="hstat-n">6+</div><div class="hstat-l">Tech Stacks</div></div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-rel">
+        <div class="hc-top"><span class="hc-name">Live — TranscendStore</span><span class="hc-live">PRODUCTION</span></div>
+        <div class="hc-metric"><div class="hc-metric-l">Platform Stats</div><div class="hc-metric-v">8,000+ hrs · 600+ eBooks</div><div class="hc-metric-s">11 languages · iOS · Android · Web · Desktop</div></div>
+        <div class="hm-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
+          <div class="hc-metric"><div class="hc-metric-l">Tech</div><div class="hc-metric-v" style="font-size:13px;margin-top:2px">React.js + Flutter</div></div>
+          <div class="hc-metric"><div class="hc-metric-l">Backend</div><div class="hc-metric-v" style="font-size:13px;margin-top:2px">Frappe + ERPNext</div></div>
+        </div>
+        <div class="hc-sec-label">HRMS Payroll — Mar 2025</div>
+        <div class="hc-metric"><div class="hc-metric-l">Total Payout</div><div class="hc-metric-v">₹48,64,200</div><div class="hc-metric-s">158 employees · 0 errors · processed in 1.5 hrs</div></div>
+        <div style="margin-top:10px">
+          <div class="hc-sec-label">RECENT WORK</div>
+          <div class="hc-row"><span class="hc-rl"><span class="sdot" style="background:#10B981"></span>Frappe CRM customised</span><span class="hc-rr">✓ Live</span></div>
+          <div class="hc-row"><span class="hc-rl"><span class="sdot" style="background:#3B82F6"></span>HRMS mobile app shipped</span><span class="hc-rr">✓ Live</span></div>
+          <div class="hc-row"><span class="hc-rl"><span class="sdot" style="background:#F59E0B"></span>Vue.js ERP dashboard</span><span class="hc-rr">✓ Live</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="about-inner inner">
+    <div class="about-text">
+      <p class="sec-label">Who I Am</p>
+      <h2 class="sec-title" style="color:white">I don't just implement ERPNext.<br/>I solve business problems.</h2>
+      <p>I'm <strong>Swapnil Pawar</strong>, a Technical Lead from Akola, Maharashtra with <strong>5+ years</strong> building production ERP systems. I've worked across education, manufacturing, retail/e-commerce, and finance — as sole developer, senior engineer, and team lead.</p>
+      <p>My edge is that I own the <strong>entire stack</strong> — Python backend, React/Vue.js frontend, Flutter mobile apps, Frappe CRM, HRMS, server deployment, and post-launch support. No hand-offs, no gaps, no surprises.</p>
+      <p>I'm currently open to <strong>freelance projects</strong> (custom ERP, HRMS, CRM) and <strong>full-time senior/lead roles</strong> with ambitious product teams.</p>
+      <div class="about-links">
+        <a href="https://www.linkedin.com/in/swapnil-pawar-2079731a0" target="_blank" class="about-link">💼 LinkedIn Profile</a>
+        <a href="https://wa.me/917218018485" target="_blank" class="about-link">💬 WhatsApp</a>
+        <a href="/cdn-cgi/l/email-protection#74070315041a1d185a135a04150315064d4d341319151d185a171b19" class="about-link">✉️ Email Me</a>
+        <a href="https://www.transcendstore.com" target="_blank" class="about-link">🌐 Live Project</a>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="about-card">
+        <h4>Industries Worked In</h4>
+        <div class="ind-tags">
+          <span class="ind-tag">🎓 Education</span><span class="ind-tag">🏭 Manufacturing</span>
+          <span class="ind-tag">🛒 Retail / E-commerce</span><span class="ind-tag">💰 Finance &amp; Accounting</span>
+          <span class="ind-tag">🙏 Spiritual / NGO</span><span class="ind-tag">🏥 Healthcare</span>
+          <span class="ind-tag">☁️ SaaS</span>
+        </div>
+      </div>
+      <div class="about-card">
+        <h4>What I Focus On</h4>
+        <ul class="focus-list">
+          <li>Custom ERPNext &amp; Frappe implementations from scratch</li>
+          <li>HRMS, Payroll &amp; Frappe CRM customisation</li>
+          <li>React.js / Vue.js frontends integrated with Frappe APIs</li>
+          <li>Flutter mobile apps (iOS &amp; Android) with ERPNext backend</li>
+          <li>Third-party API integrations — payments, biometric, messaging</li>
+          <li>Cloud deployment, server setup, &amp; ongoing maintenance</li>
+        </ul>
+      </div>
+      <div class="avail-strip">
+        <div class="avail-dot"></div>
+        <p><strong>Currently available</strong> for new projects and full-time roles. Typical response time: <strong>within 4 hours</strong> on WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section id="skills">
+  <div class="inner">
+    <p class="sec-label">Technical Stack</p>
+    <h2 class="sec-title">Every Layer, Covered</h2>
+    <p class="sec-sub">From database schema to mobile UI — built and owned in production across real client projects.</p>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-ic" style="background:#EFF6FF">🐍</div>
+        <h4>Backend Engineering</h4>
+        <div class="skill-pills"><span class="sp">Python</span><span class="sp">Frappe ORM</span><span class="sp">REST API</span><span class="sp">GraphQL</span><span class="sp">OAuth2</span><span class="sp">JWT</span><span class="sp">Frappe Hooks</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-ic" style="background:#FFF7ED">⚛️</div>
+        <h4>Frontend Development</h4>
+        <div class="skill-pills"><span class="sp">React.js</span><span class="sp">Vue.js</span><span class="sp">JavaScript ES6+</span><span class="sp">jQuery</span><span class="sp">HTML5/CSS3</span><span class="sp">Bootstrap</span><span class="sp">Frappe UI</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-ic" style="background:#F0FDF4">📱</div>
+        <h4>Mobile Development</h4>
+        <div class="skill-pills"><span class="sp">Flutter</span><span class="sp">Dart</span><span class="sp">iOS</span><span class="sp">Android</span><span class="sp">Cross-Platform</span><span class="sp">State Mgmt</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-ic" style="background:#F5F3FF">🏗️</div>
+        <h4>ERP / CRM Platforms</h4>
+        <div class="skill-pills"><span class="sp">ERPNext</span><span class="sp">Frappe CRM</span><span class="sp">Frappe HRMS</span><span class="sp">Custom Apps</span><span class="sp">Bench CLI</span><span class="sp">Doctypes</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-ic" style="background:#FFF1F2">🗄️</div>
+        <h4>Database</h4>
+        <div class="skill-pills"><span class="sp">MariaDB</span><span class="sp">MySQL</span><span class="sp">Schema Design</span><span class="sp">Query Optimisation</span><span class="sp">Migration</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-ic" style="background:#F0F9FF">☁️</div>
+        <h4>Cloud &amp; DevOps</h4>
+        <div class="skill-pills"><span class="sp">AWS</span><span class="sp">Azure</span><span class="sp">DigitalOcean</span><span class="sp">Frappe Cloud</span><span class="sp">Linux/Ubuntu</span><span class="sp">Nginx</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-ic" style="background:#FFFBEB">🔗</div>
+        <h4>Integrations</h4>
+        <div class="skill-pills"><span class="sp">Payment GW</span><span class="sp">WhatsApp API</span><span class="sp">Exotel</span><span class="sp">Biometric</span><span class="sp">SMS/Email GW</span><span class="sp">Multi-currency</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-ic" style="background:#ECFDF5">👥</div>
+        <h4>Leadership</h4>
+        <div class="skill-pills"><span class="sp">Technical Lead</span><span class="sp">Code Reviews</span><span class="sp">Agile/Scrum</span><span class="sp">Jira</span><span class="sp">Stakeholder Mgmt</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CASE STUDIES ── -->
+<section id="cases">
+  <div class="inner">
+    <p class="sec-label">Case Studies</p>
+    <h2 class="sec-title">Problem → Solution → Result</h2>
+    <p class="sec-sub">Real projects. Real numbers. How I've helped businesses transform their operations.</p>
+    <div class="case-grid">
+
+      <!-- Case 1: HRMS -->
+      <div class="case-card reveal">
+        <div class="case-top">
+          <div class="case-info">
+            <div class="case-tag"><span class="chip chip-blue">HR &amp; Payroll</span><span class="chip chip-green">Multi-country</span><span class="chip chip-gold">Production</span></div>
+            <h3>HR &amp; Payroll Management System — Regenesys Institute</h3>
+            <div class="problem"><strong>The Problem:</strong> An international management institute with staff across multiple countries was running payroll manually in Excel — hours of calculation, frequent errors, zero compliance tracking, and no HR visibility for leadership.</div>
+            <p class="solution">I designed and built a complete HR &amp; Payroll system on Frappe/ERPNext from scratch as sole developer — covering the full employee lifecycle. Biometric hardware integration, multi-currency payroll, automated statutory compliance, bulk payslip delivery, and executive dashboards — all live in production.</p>
+            <div class="case-tech"><span class="ct">Python</span><span class="ct">Frappe</span><span class="ct">ERPNext</span><span class="ct">JavaScript</span><span class="ct">MariaDB</span><span class="ct">SMS/Email API</span></div>
+          </div>
+          <div class="case-metrics">
+            <div class="case-metric c1"><div class="cm-n">60%</div><div class="cm-l">HR Effort Reduced</div><div class="cm-d">Manual payroll, attendance & leave approvals automated</div></div>
+            <div class="case-metric c2"><div class="cm-n">100%</div><div class="cm-l">Payroll Accuracy</div><div class="cm-d">Zero calculation errors since go-live</div></div>
+            <div class="case-metric c3"><div class="cm-n">&lt;2 hrs</div><div class="cm-l">Full Payroll Run</div><div class="cm-d">Down from 3–5 days of manual work</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 2: TranscendStore — with UI Mockups -->
+      <div class="case-card reveal">
+
+        <!-- ══ VISUAL PREVIEW BANNER ══ -->
+        <div style="background:linear-gradient(135deg,#0F0C29 0%,#302b63 50%,#1a0533 100%);padding:32px 32px 28px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;position:relative;overflow:hidden;border-radius:20px 20px 0 0">
+          <div style="position:absolute;top:0;right:0;bottom:0;left:0;background:radial-gradient(ellipse 55% 70% at 15% 50%,rgba(255,107,53,.14) 0%,transparent 55%),radial-gradient(ellipse 40% 40% at 88% 12%,rgba(255,215,0,.09) 0%,transparent 50%);pointer-events:none"></div>
+
+          <!-- Left info -->
+          <div style="position:relative;z-index:1;flex:0 0 200px">
+            <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(5,150,105,.2);border:1px solid rgba(5,150,105,.35);color:#34D399;border-radius:100px;padding:4px 14px;font-size:10px;font-weight:700;letter-spacing:.5px;margin-bottom:14px">
+              <span style="width:6px;height:6px;border-radius:50%;background:#34D399;display:inline-block"></span> LIVE PLATFORM
+            </div>
+            <div style="font-family:'Fraunces',Georgia,serif;font-size:26px;font-weight:900;color:white;letter-spacing:-.8px;line-height:1;margin-bottom:8px">Transcend<span style="color:#FFD700">Store</span><br/><span style="font-size:14px;opacity:.5;font-weight:400">.com</span></div>
+            <div style="font-size:11px;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:18px">BBT / ISKCON Spiritual Platform<br/>Web · iOS · Android · Desktop · CarPlay</div>
+            <div style="display:flex;flex-wrap:wrap;gap:5px">
+              <span style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.7);padding:3px 8px;border-radius:4px;font-size:9px;font-weight:600">🌐 React.js</span>
+              <span style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.7);padding:3px 8px;border-radius:4px;font-size:9px;font-weight:600">📱 Flutter</span>
+              <span style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.7);padding:3px 8px;border-radius:4px;font-size:9px;font-weight:600">🖥 Desktop</span>
+              <span style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.7);padding:3px 8px;border-radius:4px;font-size:9px;font-weight:600">🚗 CarPlay</span>
+              <span style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.7);padding:3px 8px;border-radius:4px;font-size:9px;font-weight:600">☁️ Azure</span>
+            </div>
+          </div>
+
+          <!-- Centre: Browser window mockup -->
+          <div style="position:relative;z-index:1;flex:1;min-width:280px;max-width:400px">
+            <div style="background:#1e1e2e;border-radius:10px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.6)">
+              <!-- Chrome bar -->
+              <div style="background:#2a2a3e;padding:8px 12px;display:flex;align-items:center;gap:5px">
+                <span style="width:9px;height:9px;border-radius:50%;background:#FF5F57;flex-shrink:0;display:block"></span>
+                <span style="width:9px;height:9px;border-radius:50%;background:#FEBC2E;flex-shrink:0;display:block"></span>
+                <span style="width:9px;height:9px;border-radius:50%;background:#28C840;flex-shrink:0;display:block"></span>
+                <div style="background:#111;color:rgba(255,255,255,.3);font-size:9px;padding:3px 10px;border-radius:4px;flex:1;margin-left:8px;font-family:'JetBrains Mono','Courier New',monospace">🔒 transcendstore.com</div>
+              </div>
+              <!-- Site content -->
+              <div>
+                <!-- Nav bar -->
+                <div style="background:#fff;display:flex;align-items:center;justify-content:space-between;padding:8px 14px;border-bottom:1px solid #eee">
+                  <div style="font-weight:900;font-size:12px;color:#1a1a2e;letter-spacing:-.3px">TRANSCEND</div>
+                  <div style="display:flex;gap:10px;font-size:9px;color:#555;font-weight:500"><span>eBooks</span><span>Audio</span><span>Subscribe</span><span>Downloads</span></div>
+                  <div style="background:#FF6B35;color:white;padding:4px 10px;border-radius:5px;font-size:9px;font-weight:700">Sign In</div>
+                </div>
+                <!-- Hero section -->
+                <div style="background:linear-gradient(135deg,#FFFBF5,#FFF0E0);display:grid;grid-template-columns:1.2fr 1fr;gap:10px;padding:14px 14px 10px">
+                  <div>
+                    <div style="background:rgba(255,107,53,.1);color:#E65100;font-size:8px;font-weight:700;padding:2px 7px;border-radius:3px;margin-bottom:7px;display:inline-block">📿 Spiritual Knowledge in 11 Languages</div>
+                    <div style="font-family:'Fraunces',Georgia,serif;font-size:14px;font-weight:900;color:#1a1a2e;line-height:1.2;margin-bottom:5px">8,000+ hrs of Sacred<br/>Audiobooks &amp; eBooks</div>
+                    <div style="font-size:8px;color:#666;line-height:1.5;margin-bottom:9px">Bhagavad-gītā · Śrīmad-Bhāgavatam<br/>iOS · Android · Web · Desktop · CarPlay</div>
+                    <div style="display:flex;gap:6px">
+                      <div style="background:#FF6B35;color:white;padding:5px 11px;border-radius:4px;font-size:8px;font-weight:700">Explore Library</div>
+                      <div style="border:1px solid #ddd;color:#333;padding:5px 11px;border-radius:4px;font-size:8px;font-weight:600">Download App ↓</div>
+                    </div>
+                  </div>
+                  <div style="display:flex;gap:7px;align-items:flex-start">
+                    <div style="background:white;border:1px solid #eee;border-radius:6px;padding:7px;box-shadow:0 3px 10px rgba(0,0,0,.1)">
+                      <div style="background:linear-gradient(145deg,#1a1a2e,#16213e);border-radius:4px;height:58px;width:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3px">
+                        <div style="color:#FFD700;font-size:7.5px;font-weight:900;text-align:center;line-height:1.25">Bhagavad-<br/>gītā<br/>As It Is</div>
+                        <div style="color:rgba(255,215,0,.45);font-size:5px;text-align:center;margin-top:2px">A.C. Bhaktivedanta</div>
+                      </div>
+                      <div style="font-size:7px;font-weight:700;color:#1a1a2e;margin-top:5px;line-height:1.2">Bhagavad-gītā</div>
+                      <div style="display:flex;gap:3px;margin-top:3px;flex-wrap:wrap">
+                        <span style="background:#FFF3E0;color:#E65100;padding:1px 4px;border-radius:2px;font-size:5.5px;font-weight:700">11 Lang</span>
+                        <span style="background:#E8F5E9;color:#2E7D32;padding:1px 4px;border-radius:2px;font-size:5.5px;font-weight:700">Lifetime</span>
+                      </div>
+                    </div>
+                    <div style="background:white;border:1px solid #eee;border-radius:6px;padding:7px;box-shadow:0 2px 8px rgba(0,0,0,.07);opacity:.8;margin-top:12px">
+                      <div style="background:linear-gradient(145deg,#4a1942,#8e24aa);border-radius:4px;height:48px;width:54px;display:flex;align-items:center;justify-content:center;padding:3px">
+                        <div style="color:#FFD700;font-size:7px;font-weight:900;text-align:center;line-height:1.3">Śrīmad-<br/>Bhāgavatam</div>
+                      </div>
+                      <div style="font-size:6.5px;font-weight:700;color:#1a1a2e;margin-top:4px">Śrīmad-Bhāgavatam</div>
+                      <div style="font-size:6px;color:#888;margin-top:2px">🎧 400+ hrs</div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Stats strip -->
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);background:#0F0C29">
+                  <div style="padding:8px 6px;text-align:center;border-right:1px solid rgba(255,255,255,.07)"><div style="font-family:'Fraunces',Georgia,serif;font-size:13px;font-weight:900;color:#FFD700">600+</div><div style="font-size:6.5px;color:rgba(255,255,255,.4);margin-top:1px">eBooks</div></div>
+                  <div style="padding:8px 6px;text-align:center;border-right:1px solid rgba(255,255,255,.07)"><div style="font-family:'Fraunces',Georgia,serif;font-size:13px;font-weight:900;color:#FFD700">8,000+</div><div style="font-size:6.5px;color:rgba(255,255,255,.4);margin-top:1px">Audio Hrs</div></div>
+                  <div style="padding:8px 6px;text-align:center;border-right:1px solid rgba(255,255,255,.07)"><div style="font-family:'Fraunces',Georgia,serif;font-size:13px;font-weight:900;color:#FFD700">11</div><div style="font-size:6.5px;color:rgba(255,255,255,.4);margin-top:1px">Languages</div></div>
+                  <div style="padding:8px 6px;text-align:center"><div style="font-family:'Fraunces',Georgia,serif;font-size:13px;font-weight:900;color:#FFD700">5</div><div style="font-size:6.5px;color:rgba(255,255,255,.4);margin-top:1px">Platforms</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Phone mockup -->
+          <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0">
+            <!-- phone shell -->
+            <div style="width:118px;background:#0a0a0a;border-radius:22px;overflow:hidden;box-shadow:0 20px 56px rgba(0,0,0,.75);border:2px solid #2a2a2a">
+              <!-- notch -->
+              <div style="height:14px;background:#111;display:flex;justify-content:center;align-items:flex-end;padding-bottom:3px">
+                <div style="width:32px;height:5px;background:#222;border-radius:3px"></div>
+              </div>
+              <!-- screen background -->
+              <div style="background:#0F0C29">
+                <!-- header -->
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 9px;border-bottom:1px solid rgba(255,255,255,.08)">
+                  <div style="font-size:9px;font-weight:900;color:#FFD700;letter-spacing:-.3px">TRANSCEND</div>
+                  <div style="font-size:12px">🔍</div>
+                </div>
+                <!-- now playing card -->
+                <div style="background:rgba(255,255,255,.07);margin:6px 7px;border-radius:9px;padding:8px 9px">
+                  <div style="font-size:7.5px;color:rgba(255,215,0,.75);font-weight:700;margin-bottom:3px;letter-spacing:.3px">▶ NOW PLAYING</div>
+                  <div style="font-size:9px;font-weight:700;color:white;line-height:1.35;margin-bottom:6px">Bhagavad-gītā<br/>Ch.2 — Sānkhya-yoga</div>
+                  <div style="height:3px;background:rgba(255,255,255,.12);border-radius:2px;margin-bottom:3px">
+                    <div style="height:100%;width:40%;background:linear-gradient(90deg,#FFD700,#FF6B35);border-radius:2px"></div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;font-size:6px;color:rgba(255,255,255,.3);margin-bottom:6px"><span>12:34</span><span>48:20</span></div>
+                  <div style="display:flex;justify-content:center;gap:16px;font-size:16px;color:rgba(255,255,255,.85)">⏮ ⏸ ⏭</div>
+                </div>
+                <!-- section label -->
+                <div style="padding:4px 9px;font-size:7px;font-weight:700;color:rgba(255,255,255,.35);letter-spacing:1px">MY LIBRARY</div>
+                <!-- library items -->
+                <div style="display:flex;align-items:center;gap:7px;padding:4px 9px">
+                  <div style="width:24px;height:24px;border-radius:5px;background:linear-gradient(135deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="color:#FFD700;font-size:6.5px;font-weight:900">BG</span></div>
+                  <div style="flex:1;min-width:0"><div style="font-size:7.5px;font-weight:700;color:white;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Bhagavad-gītā As It Is</div><div style="font-size:6px;color:rgba(255,255,255,.35)">eBook · English</div></div>
+                  <span style="color:#4ade80;font-size:10px;flex-shrink:0">✓</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:7px;padding:4px 9px">
+                  <div style="width:24px;height:24px;border-radius:5px;background:linear-gradient(135deg,#4a1942,#8e24aa);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="color:#FFD700;font-size:6.5px;font-weight:900">SB</span></div>
+                  <div style="flex:1;min-width:0"><div style="font-size:7.5px;font-weight:700;color:white;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Śrīmad-Bhāgavatam</div><div style="font-size:6px;color:rgba(255,255,255,.35)">Audio · Hindi</div></div>
+                  <span style="color:white;font-size:10px;flex-shrink:0">▶</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:7px;padding:4px 9px">
+                  <div style="width:24px;height:24px;border-radius:5px;background:linear-gradient(135deg,#1b5e20,#388e3c);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="color:white;font-size:6.5px;font-weight:900">CC</span></div>
+                  <div style="flex:1;min-width:0"><div style="font-size:7.5px;font-weight:700;color:white;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Chaitanya Charitāmṛta</div><div style="font-size:6px;color:rgba(255,255,255,.35)">eBook · Bengali</div></div>
+                  <span style="color:#60a5fa;font-size:10px;flex-shrink:0">↓</span>
+                </div>
+                <!-- bottom tab bar -->
+                <div style="display:flex;justify-content:space-around;padding:7px 6px 5px;border-top:1px solid rgba(255,255,255,.08);margin-top:5px;font-size:14px">
+                  <span style="color:rgba(255,255,255,.4)">🏠</span>
+                  <span style="color:rgba(255,255,255,.4)">📚</span>
+                  <span style="color:#FFD700">🎧</span>
+                  <span style="color:rgba(255,255,255,.4)">🛒</span>
+                  <span style="color:rgba(255,255,255,.4)">👤</span>
+                </div>
+              </div>
+            </div>
+            <div style="font-size:10px;font-weight:600;color:rgba(255,255,255,.4);text-align:center;letter-spacing:.2px">Flutter · iOS &amp; Android</div>
+          </div>
+        </div>
+
+        <!-- Case details (below visual) -->
+        <div class="case-top" style="border-top:1px solid var(--border)">
+          <div class="case-info">
+            <div class="case-tag"><span class="chip chip-violet">E-commerce</span><span class="chip chip-blue">React.js + Flutter</span><span class="chip chip-gold">Live Product</span></div>
+            <h3>TranscendStore.com — BBT / ISKCON Digital Platform</h3>
+            <div class="problem"><strong>The Problem:</strong> Bhaktivedanta Book Trust needed a unified commerce and content platform — physical books, eBooks, audiobooks, subscriptions — running across Web, iOS, Android, and Desktop, with all orders, billing, and inventory synced to ERPNext.</div>
+            <p class="solution">Built the complete ERPNext/Frappe backend and integrated it with the React.js web storefront and Flutter mobile app. Designed REST API connectors for real-time sync, multi-currency payment gateway, subscription lifecycle management (auto-renewal, EMI, gift purchases, temple discounts), and automated order-to-payslip workflows.</p>
+            <div class="case-tech"><span class="ct">React.js</span><span class="ct">Flutter</span><span class="ct">Frappe</span><span class="ct">ERPNext</span><span class="ct">REST API</span><span class="ct">Azure</span><span class="ct">Multi-currency</span></div>
+            <a href="https://www.transcendstore.com" target="_blank" class="case-link">Visit live site ↗</a>
+          </div>
+          <div class="case-metrics">
+            <div class="case-metric c4"><div class="cm-n">600+</div><div class="cm-l">eBooks Live</div><div class="cm-d">Across 11 languages on all platforms</div></div>
+            <div class="case-metric c2"><div class="cm-n">8,000+</div><div class="cm-l">Hrs of Audio</div><div class="cm-d">iOS · Android · Web · Desktop · CarPlay</div></div>
+            <div class="case-metric c1"><div class="cm-n">Global</div><div class="cm-l">Multi-currency</div><div class="cm-d">INR, USD, BDT + more — single checkout</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 3: Education ERP -->
+      <div class="case-card reveal">
+
+        <!-- ══ VISUAL PREVIEW BANNER ══ -->
+        <div style="background:linear-gradient(135deg,#0B1D35 0%,#1e3a6e 55%,#1D4ED8 100%);padding:32px 32px 28px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;position:relative;overflow:hidden;border-radius:20px 20px 0 0">
+          <div style="position:absolute;top:0;right:0;bottom:0;left:0;background:radial-gradient(ellipse 55% 60% at 45% 55%,rgba(245,158,11,.12) 0%,transparent 60%);pointer-events:none"></div>
+
+          <!-- Left: hub diagram -->
+          <div style="position:relative;z-index:1;flex:1;min-width:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0">
+            <div style="font-family:'JetBrains Mono','Courier New',monospace;font-size:10px;color:rgba(255,255,255,.4);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;text-align:center">All-in-One Education ERP</div>
+            <!-- Module grid -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:360px">
+              <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px 8px;text-align:center;-webkit-backdrop-filter:blur(6px)">
+                <div style="font-size:18px;margin-bottom:4px">🎓</div>
+                <div style="font-size:8px;font-weight:700;color:rgba(255,255,255,.75)">Admissions</div>
+              </div>
+              <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px 8px;text-align:center;-webkit-backdrop-filter:blur(6px)">
+                <div style="font-size:18px;margin-bottom:4px">📅</div>
+                <div style="font-size:8px;font-weight:700;color:rgba(255,255,255,.75)">Timetable</div>
+              </div>
+              <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px 8px;text-align:center;-webkit-backdrop-filter:blur(6px)">
+                <div style="font-size:18px;margin-bottom:4px">✅</div>
+                <div style="font-size:8px;font-weight:700;color:rgba(255,255,255,.75)">Attendance</div>
+              </div>
+              <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px 8px;text-align:center;-webkit-backdrop-filter:blur(6px)">
+                <div style="font-size:18px;margin-bottom:4px">📝</div>
+                <div style="font-size:8px;font-weight:700;color:rgba(255,255,255,.75)">Exams &amp; Marks</div>
+              </div>
+              <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px 8px;text-align:center;-webkit-backdrop-filter:blur(6px)">
+                <div style="font-size:18px;margin-bottom:4px">💰</div>
+                <div style="font-size:8px;font-weight:700;color:rgba(255,255,255,.75)">Fee Collection</div>
+              </div>
+              <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px 8px;text-align:center;-webkit-backdrop-filter:blur(6px)">
+                <div style="font-size:18px;margin-bottom:4px">👩‍🏫</div>
+                <div style="font-size:8px;font-weight:700;color:rgba(255,255,255,.75)">Faculty HR</div>
+              </div>
+              <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px 8px;text-align:center;-webkit-backdrop-filter:blur(6px)">
+                <div style="font-size:18px;margin-bottom:4px">📊</div>
+                <div style="font-size:8px;font-weight:700;color:rgba(255,255,255,.75)">Reports</div>
+              </div>
+              <div style="background:rgba(245,158,11,.2);border:1px solid rgba(245,158,11,.35);border-radius:10px;padding:10px 8px;text-align:center">
+                <div style="font-size:18px;margin-bottom:4px">📱</div>
+                <div style="font-size:8px;font-weight:700;color:#FCD34D">Mobile App</div>
+              </div>
+            </div>
+            <!-- Powered by badge -->
+            <div style="margin-top:14px;display:flex;align-items:center;gap:8px">
+              <div style="height:1px;width:40px;background:rgba(255,255,255,.2)"></div>
+              <span style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.7);padding:4px 12px;border-radius:20px;font-size:10px;font-weight:700">Powered by Frappe ERPNext</span>
+              <div style="height:1px;width:40px;background:rgba(255,255,255,.2)"></div>
+            </div>
+          </div>
+
+          <!-- Right: Student App mockup -->
+          <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:8px;flex-shrink:0">
+            <div style="width:130px;background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 20px 56px rgba(0,0,0,.55);border:2px solid rgba(0,0,0,.1)">
+              <!-- notch -->
+              <div style="height:14px;background:#1a1a2e;display:flex;justify-content:center;align-items:flex-end;padding-bottom:3px">
+                <div style="width:32px;height:5px;background:#333;border-radius:3px"></div>
+              </div>
+              <!-- screen -->
+              <div style="background:#F1F5FB">
+                <!-- app header -->
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:white;border-bottom:1px solid #E2E8F0">
+                  <div style="font-size:9.5px;font-weight:900;color:#1a1a2e">EduERP</div>
+                  <div style="font-size:7px;color:#64748B;font-weight:500">Student</div>
+                  <div style="font-size:12px">🔔</div>
+                </div>
+                <!-- welcome card -->
+                <div style="background:linear-gradient(135deg,#1D4ED8,#4338CA);margin:8px 8px 0;border-radius:10px;padding:9px 10px">
+                  <div style="font-size:6.5px;color:rgba(255,255,255,.6);margin-bottom:2px">Welcome back</div>
+                  <div style="font-size:10px;font-weight:800;color:white;margin-bottom:1px">Rahul Sharma</div>
+                  <div style="font-size:6.5px;color:rgba(255,255,255,.65)">B.Tech CSE · Sem 5 · Roll 23</div>
+                </div>
+                <!-- stats grid -->
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:6px 8px">
+                  <div style="background:#EFF6FF;border-radius:7px;padding:7px;text-align:center">
+                    <div style="font-size:13px;font-weight:900;color:#1D4ED8">92%</div>
+                    <div style="font-size:6.5px;color:#64748B;margin-top:1px">Attendance</div>
+                  </div>
+                  <div style="background:#F0FDF4;border-radius:7px;padding:7px;text-align:center">
+                    <div style="font-size:13px;font-weight:900;color:#059669">8.4</div>
+                    <div style="font-size:6.5px;color:#64748B;margin-top:1px">CGPA</div>
+                  </div>
+                  <div style="background:#FFF7ED;border-radius:7px;padding:7px;text-align:center">
+                    <div style="font-size:13px;font-weight:900;color:#D97706">₹0</div>
+                    <div style="font-size:6.5px;color:#64748B;margin-top:1px">Dues</div>
+                  </div>
+                  <div style="background:#F5F3FF;border-radius:7px;padding:7px;text-align:center">
+                    <div style="font-size:13px;font-weight:900;color:#7C3AED">6</div>
+                    <div style="font-size:6.5px;color:#64748B;margin-top:1px">Classes Today</div>
+                  </div>
+                </div>
+                <!-- schedule label -->
+                <div style="padding:2px 9px 3px;font-size:7px;font-weight:700;color:#64748B;letter-spacing:.6px">TODAY'S SCHEDULE</div>
+                <!-- schedule items -->
+                <div style="padding:0 8px;display:flex;flex-direction:column;gap:4px">
+                  <div style="background:white;border:1px solid #E2E8F0;border-radius:6px;padding:6px 8px;display:flex;gap:6px;align-items:center">
+                    <div style="background:#1D4ED8;color:white;border-radius:3px;padding:2px 5px;font-size:6px;font-weight:700;white-space:nowrap;flex-shrink:0">9:00 AM</div>
+                    <div><div style="font-size:8px;font-weight:700;color:#0F172A">Data Structures</div><div style="font-size:6px;color:#94A3B8">Room 301 · Dr. Sharma</div></div>
+                  </div>
+                  <div style="background:white;border:1px solid #E2E8F0;border-radius:6px;padding:6px 8px;display:flex;gap:6px;align-items:center">
+                    <div style="background:#4338CA;color:white;border-radius:3px;padding:2px 5px;font-size:6px;font-weight:700;white-space:nowrap;flex-shrink:0">11:00 AM</div>
+                    <div><div style="font-size:8px;font-weight:700;color:#0F172A">Algorithms Lab</div><div style="font-size:6px;color:#94A3B8">Lab 2 · Prof. Mehta</div></div>
+                  </div>
+                </div>
+                <!-- pay button -->
+                <div style="margin:7px 8px 0;background:#1D4ED8;border-radius:6px;padding:6px 8px;text-align:center">
+                  <div style="font-size:8px;font-weight:700;color:white">Pay ₹12,500 Semester Fee →</div>
+                </div>
+                <!-- bottom nav -->
+                <div style="display:flex;justify-content:space-around;padding:7px 6px 5px;border-top:1px solid #E2E8F0;margin-top:7px;font-size:14px;background:white">
+                  <span>🏠</span><span style="color:#1D4ED8">📚</span><span>📊</span><span>💬</span><span>👤</span>
+                </div>
+              </div>
+            </div>
+            <div style="font-size:10px;font-weight:600;color:rgba(255,255,255,.4);text-align:center">Student · Faculty · Admin Apps</div>
+          </div>
+        </div>
+
+        <!-- Case details -->
+        <div class="case-top" style="border-top:1px solid var(--border)">
+          <div class="case-info">
+            <div class="case-tag"><span class="chip chip-blue">Education ERP</span><span class="chip chip-violet">Frappe + ERPNext</span><span class="chip chip-green">All-in-One App</span></div>
+            <h3>Education ERP — All-in-One Platform using Frappe ERPNext</h3>
+            <div class="problem"><strong>The Problem:</strong> Educational institutions were running on fragmented systems — admissions in one tool, attendance in another, fee collection in Excel, and HR in a third system. No unified data, no real-time visibility, and constant manual reconciliation between departments.</div>
+            <p class="solution">Built a comprehensive Education ERP using Frappe ERPNext's Education Module — covering admissions, student lifecycle, timetable, attendance, exams &amp; marks, fee collection, and faculty HRMS. Delivered alongside a cross-platform Flutter mobile app (Student, Faculty &amp; Admin roles) giving real-time access to schedules, attendance, results, and fee status from any device.</p>
+            <div class="case-tech"><span class="ct">Frappe</span><span class="ct">ERPNext Education</span><span class="ct">Python</span><span class="ct">Flutter</span><span class="ct">MariaDB</span><span class="ct">REST API</span><span class="ct">Payment Gateway</span></div>
+          </div>
+          <div class="case-metrics">
+            <div class="case-metric c1"><div class="cm-n">8+</div><div class="cm-l">Modules Integrated</div><div class="cm-d">Admissions → Alumni — one unified platform</div></div>
+            <div class="case-metric c2"><div class="cm-n">3 Apps</div><div class="cm-l">Student · Faculty · Admin</div><div class="cm-d">Flutter cross-platform, iOS &amp; Android</div></div>
+            <div class="case-metric c3"><div class="cm-n">100%</div><div class="cm-l">Digital Fee Collection</div><div class="cm-d">Online gateway + instant receipts in-app</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURED ── -->
+<section id="featured">
+  <div class="inner">
+    <p class="sec-label">New: Frappe CRM + Vue.js</p>
+    <h2 class="sec-title">CRM &amp; Custom Dashboards</h2>
+    <p class="sec-sub">Beyond ERPNext — Frappe CRM customisation and Vue.js-powered dashboards for sales and operations teams.</p>
+    <div class="feat-wrap">
+      <div class="feat-visual">
+        <div class="fv-rel">
+          <div>
+            <div class="fv-eyebrow">Frappe CRM · Vue.js · ERPNext</div>
+            <div class="fv-title">Custom CRM &amp;<br/><span>Vue.js</span> Dashboards</div>
+          </div>
+          <div class="fv-stats">
+            <div class="fvs"><div class="fvs-n">Frappe CRM</div><div class="fvs-l">Customised pipelines, stages &amp; automations</div></div>
+            <div class="fvs"><div class="fvs-n">Vue.js</div><div class="fvs-l">Reactive dashboards on Frappe APIs</div></div>
+            <div class="fvs"><div class="fvs-n">Flutter</div><div class="fvs-l">HRMS mobile app for employees (ESS)</div></div>
+            <div class="fvs"><div class="fvs-n">REST API</div><div class="fvs-l">Frappe backend powering all frontends</div></div>
+          </div>
+          <div class="fv-platforms">
+            <span class="fvp">🌐 Vue.js Web</span><span class="fvp">📱 Flutter ESS App</span><span class="fvp">🤝 Frappe CRM</span>
+          </div>
+        </div>
+      </div>
+      <div class="feat-info">
+        <h2>Frappe CRM, Vue.js Frontends &amp; HRMS Mobile App</h2>
+        <p>I customise Frappe CRM for sales teams — custom pipeline stages, automated follow-up workflows, lead scoring, and WhatsApp/email integration. I also build Vue.js dashboards that sit on top of Frappe APIs, giving management real-time operational visibility without touching ERPNext directly.</p>
+        <ul class="feat-bullets">
+          <li>Frappe CRM: custom lead pipelines, deal stages, automated task creation, and communication logging</li>
+          <li>CRM mobile access — Flutter app integrated with Frappe CRM APIs for sales team on-the-go</li>
+          <li>Vue.js dashboards: real-time charts, KPI tiles, and drill-down reports powered by Frappe REST APIs</li>
+          <li>Frappe HRMS mobile app customisation — employee self-service (leave, payslip, attendance) on iOS &amp; Android</li>
+          <li>Custom notification flows: WhatsApp, SMS, and email triggers from CRM and HRMS events</li>
+          <li>Role-based views — what a sales rep sees vs a manager vs C-suite, all from the same system</li>
+        </ul>
+        <div class="tech-row">
+          <span class="ct">Vue.js</span><span class="ct">Frappe CRM</span><span class="ct">Flutter</span><span class="ct">Python</span><span class="ct">REST API</span><span class="ct">WhatsApp API</span>
+        </div>
+        <a href="#contact" class="case-link">Discuss your CRM project →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HRMS ── -->
+<section id="hrms">
+  <div class="inner">
+    <p class="sec-label">Product Spotlight</p>
+    <h2 class="sec-title">Custom HRMS &amp; Payroll</h2>
+    <p class="sec-sub">Complete HR management from onboarding to exit — built custom on Frappe/ERPNext with a Flutter mobile app for employees.</p>
+
+    <div class="hrms-intro">
+      <div class="hrms-intro-text">
+        <h2>Built for <em>Your</em> Company,<br/>Not a Generic Template</h2>
+        <p>Every HRMS I build is configured to your org structure, salary grades, statutory rules, and workflows. Not a SaaS subscription — your own system, on your own server, customised exactly as you need.</p>
+        <div class="target-chips">
+          <span class="chip chip-blue">✓ Startups &amp; SMEs</span>
+          <span class="chip chip-green">✓ 50–500 Employees</span>
+          <span class="chip chip-gold">✓ Multi-country Teams</span>
+          <span class="chip chip-violet">✓ Manufacturing &amp; Services</span>
+        </div>
+        <div class="hrms-kpis">
+          <div class="kpi"><div class="kpi-n">60%</div><div class="kpi-l">HR Effort Saved</div></div>
+          <div class="kpi"><div class="kpi-n">100%</div><div class="kpi-l">Payroll Accuracy</div></div>
+          <div class="kpi"><div class="kpi-n">1 Day</div><div class="kpi-l">Onboarding Time</div></div>
+        </div>
+      </div>
+      <div class="hmock">
+        <div class="hm-bar"><span class="hm-title">HRMS Live Dashboard</span><span class="hm-badge">LIVE</span></div>
+        <div class="hm-card"><div class="hm-lbl">March Payroll</div><div class="hm-val">₹48,64,200</div><div class="hm-sub">158 employees · 0 errors · 1.5 hrs</div></div>
+        <div class="hm-2"><div class="hm-card"><div class="hm-lbl">Present Today</div><div class="hm-val" style="color:#34D399">142</div><div class="hm-sub">89.9%</div></div><div class="hm-card"><div class="hm-lbl">Pending Leave</div><div class="hm-val" style="color:#FCD34D">7</div><div class="hm-sub">approvals</div></div></div>
+        <div class="hm-bwrap"><div class="hm-bl"><span>Compliance Score</span><span>98/100</span></div><div class="hm-bt"><div class="hm-bf" style="width:98%;background:linear-gradient(90deg,#10B981,#059669)"></div></div></div>
+        <div>
+          <div style="font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.8px;margin-bottom:6px">RECENT</div>
+          <div class="hm-row"><span class="hm-rl"><span class="sdot" style="background:#10B981"></span>Payroll processed</span><span class="hm-rr">2 hrs ago</span></div>
+          <div class="hm-row"><span class="hm-rl"><span class="sdot" style="background:#3B82F6"></span>3 joined — onboarded</span><span class="hm-rr">Today</span></div>
+          <div class="hm-row"><span class="hm-rl"><span class="sdot" style="background:#F59E0B"></span>Leave approved</span><span class="hm-rr">1 hr ago</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pain -->
+    <p class="sec-label" style="margin-bottom:8px">Why Clients Come to Me</p>
+    <h3 style="font-family:'Fraunces',Georgia,serif;font-size:28px;font-weight:900;color:var(--navy);letter-spacing:-1px;margin-bottom:8px">Is Your HR Team Stuck Here?</h3>
+    <p style="font-size:14px;color:var(--gray);margin-bottom:28px">Real problems that cost companies money, time, and good employees.</p>
+    <div class="pain-grid">
+      <div class="pain-card reveal"><div class="pain-emoji">😩</div><h4>Manual Payroll Every Month</h4><p>Hours of Excel, manual tax, error-prone slips — and the stress of paying someone wrong.</p><div class="pain-solve">✓ Fully automated in one click</div></div>
+      <div class="pain-card reveal"><div class="pain-emoji">📋</div><h4>Scattered Employee Data</h4><p>Joining docs in email, leave in WhatsApp, attendance in a different app — no single truth.</p><div class="pain-solve">✓ One unified system</div></div>
+      <div class="pain-card reveal"><div class="pain-emoji">🌍</div><h4>Multi-Country Payroll</h4><p>Different currencies, tax rules, compliance laws — impossible to manage manually across borders.</p><div class="pain-solve">✓ Built-in multi-currency engine</div></div>
+      <div class="pain-card reveal"><div class="pain-emoji">🛡</div><h4>Compliance Anxiety</h4><p>PF, ESI, TDS by hand — high risk of penalties, audit failures, and employee disputes.</p><div class="pain-solve">✓ Automated statutory compliance</div></div>
+      <div class="pain-card reveal"><div class="pain-emoji">📱</div><h4>No Employee Self-Service</h4><p>Staff messaging HR for payslips, leave balances, and attendance — wasting everyone's time.</p><div class="pain-solve">✓ Flutter ESS mobile app included</div></div>
+      <div class="pain-card reveal"><div class="pain-emoji">📊</div><h4>Zero HR Visibility</h4><p>No dashboards, no attrition data, no cost trends — leadership decisions made blind.</p><div class="pain-solve">✓ Live analytics dashboards</div></div>
+    </div>
+
+    <!-- Lifecycle -->
+    <p class="sec-label" style="margin-bottom:8px">End-to-End Coverage</p>
+    <h3 style="font-family:'Fraunces',Georgia,serif;font-size:28px;font-weight:900;color:var(--navy);letter-spacing:-1px;margin-bottom:6px">Complete Employee Lifecycle</h3>
+    <p style="font-size:14px;color:var(--gray);margin-bottom:0">Every stage tracked, automated, and audited — Day 0 to final settlement.</p>
+    <div class="lifecycle">
+      <div class="lcs"><div class="lcs-icon">📢</div><div class="lcs-t">Recruitment</div><div class="lcs-d">Job posting, applicant tracking</div></div>
+      <div class="lcs"><div class="lcs-icon">✍️</div><div class="lcs-t">Offer &amp; Joining</div><div class="lcs-d">Digital letters, doc collection</div></div>
+      <div class="lcs"><div class="lcs-icon">🎓</div><div class="lcs-t">Onboarding</div><div class="lcs-d">Access, induction, welcome kit</div></div>
+      <div class="lcs"><div class="lcs-icon">🕐</div><div class="lcs-t">Attendance</div><div class="lcs-d">Biometric, mobile GPS, shifts</div></div>
+      <div class="lcs"><div class="lcs-icon">🌴</div><div class="lcs-t">Leave</div><div class="lcs-d">Approval workflows, accruals</div></div>
+      <div class="lcs"><div class="lcs-icon">💰</div><div class="lcs-t">Payroll</div><div class="lcs-d">Salary, tax, compliance, slips</div></div>
+      <div class="lcs"><div class="lcs-icon">📈</div><div class="lcs-t">Performance</div><div class="lcs-d">Appraisals, increments</div></div>
+      <div class="lcs"><div class="lcs-icon">🚪</div><div class="lcs-t">Exit &amp; F&amp;F</div><div class="lcs-d">Clearance, settlement, letters</div></div>
+    </div>
+
+    <!-- Modules -->
+    <p class="sec-label" style="margin-bottom:8px">Module Deep-Dive</p>
+    <h3 style="font-family:'Fraunces',Georgia,serif;font-size:28px;font-weight:900;color:var(--navy);letter-spacing:-1px;margin-bottom:24px">Click a module to explore</h3>
+    <div class="htabs">
+      <div class="htab active" onclick="htab('ob',this)">👤 Onboarding</div>
+      <div class="htab" onclick="htab('at',this)">🕐 Attendance</div>
+      <div class="htab" onclick="htab('lv',this)">🌴 Leave</div>
+      <div class="htab" onclick="htab('py',this)">💰 Payroll</div>
+      <div class="htab" onclick="htab('co',this)">🛡 Compliance</div>
+      <div class="htab" onclick="htab('an',this)">📊 Analytics</div>
+      <div class="htab" onclick="htab('ex',this)">🚪 Exit &amp; F&amp;F</div>
+      <div class="htab" onclick="htab('mo',this)">📱 Mobile App</div>
+    </div>
+    <div class="htab-c active" id="ht-ob">
+      <div class="hfeats">
+        <div class="hfeat"><div class="hfeat-ic" style="background:#EFF6FF">📝</div><div><h5>Digital Offer &amp; Appointment Letters</h5><p>Auto-generate branded offer letters and email them instantly — no manual drafting.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F0FDF4">🗂</div><div><h5>Document Collection Portal</h5><p>Employees upload ID, certificates, and docs directly — no physical paperwork required.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#FFF7ED">🏦</div><div><h5>Bank &amp; Tax Details Capture</h5><p>Collect bank account, PAN, and investment declarations during onboarding flow itself.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F5F3FF">🔐</div><div><h5>Automatic Role &amp; Access Assignment</h5><p>System permissions and org hierarchy configured automatically on joining date.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F0FDFA">✉️</div><div><h5>Welcome Email &amp; Onboarding Checklist</h5><p>Personalised welcome communication with a first-week checklist sent automatically.</p></div></div>
+      </div>
+      <div class="hmock">
+        <div class="hm-bar"><span class="hm-title">New Joiners — April</span><span class="hm-badge">LIVE</span></div>
+        <div class="hm-card"><div class="hm-lbl">JOINING THIS MONTH</div><div class="hm-val">12 Employees</div><div class="hm-sub">4 pending document submission</div></div>
+        <div class="hm-2"><div class="hm-card"><div class="hm-lbl">OFFER LETTERS</div><div class="hm-val">12/12</div></div><div class="hm-card"><div class="hm-lbl">DOCS RECEIVED</div><div class="hm-val">8/12</div></div></div>
+        <div><div style="font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.8px;margin-bottom:7px">CHECKLIST — Rahul Sharma</div>
+          <div class="hm-row"><span class="hm-rl"><span class="sdot" style="background:#10B981"></span>Offer letter signed</span><span class="hm-rr" style="color:#34D399">Done</span></div>
+          <div class="hm-row"><span class="hm-rl"><span class="sdot" style="background:#10B981"></span>Documents uploaded</span><span class="hm-rr" style="color:#34D399">Done</span></div>
+          <div class="hm-row"><span class="hm-rl"><span class="sdot" style="background:#F59E0B"></span>Bank details</span><span class="hm-rr" style="color:#FCD34D">Pending</span></div>
+          <div class="hm-row"><span class="hm-rl"><span class="sdot" style="background:#6B7280"></span>System access</span><span class="hm-rr" style="color:#9CA3AF">Queued</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="htab-c" id="ht-at">
+      <div class="hfeats">
+        <div class="hfeat"><div class="hfeat-ic" style="background:#EFF6FF">🤳</div><div><h5>Biometric &amp; Hardware Integration</h5><p>Real-time sync with ZKTeco, eSSL and other devices via REST API — no manual imports ever.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F0FDF4">📍</div><div><h5>Mobile GPS Check-in</h5><p>Field employees check in via the Flutter app with GPS validation — no proxy attendance.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#FFF7ED">🔄</div><div><h5>Shift &amp; Rotation Management</h5><p>Morning, general, and night shifts with auto-assignment, rotation, and OT calculation rules.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F5F3FF">⚡</div><div><h5>Overtime Tracking &amp; Approval</h5><p>OT auto-calculated per shift config with manager approval before payroll processing.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F0FDFA">🔔</div><div><h5>Late &amp; Absent Alerts</h5><p>Automatic WhatsApp/SMS/email alerts to managers for late arrivals and unexplained absences.</p></div></div>
+      </div>
+      <div class="hmock">
+        <div class="hm-bar"><span class="hm-title">Today's Attendance</span><span class="hm-badge">LIVE</span></div>
+        <div class="hm-2"><div class="hm-card"><div class="hm-lbl">PRESENT</div><div class="hm-val" style="color:#34D399">142</div><div class="hm-sub">of 158</div></div><div class="hm-card"><div class="hm-lbl">ON LEAVE</div><div class="hm-val" style="color:#FCD34D">11</div></div></div>
+        <div class="hm-bwrap"><div class="hm-bl"><span>Present Rate</span><span>89.9%</span></div><div class="hm-bt"><div class="hm-bf" style="width:90%;background:linear-gradient(90deg,#10B981,#059669)"></div></div></div>
+        <div class="hm-bwrap"><div class="hm-bl"><span>On-Time Rate</span><span>76%</span></div><div class="hm-bt"><div class="hm-bf" style="width:76%;background:linear-gradient(90deg,#3B82F6,#1D4ED8)"></div></div></div>
+        <div><div class="hm-row"><span class="hm-rl">Morning Shift</span><span class="hm-rr">48</span></div><div class="hm-row"><span class="hm-rl">General Shift</span><span class="hm-rr">86</span></div><div class="hm-row"><span class="hm-rl">Night Shift</span><span class="hm-rr">8</span></div></div>
+      </div>
+    </div>
+    <div class="htab-c" id="ht-lv">
+      <div class="hfeats">
+        <div class="hfeat"><div class="hfeat-ic" style="background:#EFF6FF">📋</div><div><h5>Configurable Leave Types</h5><p>CL, SL, EL, Maternity, Paternity, Comp-off — rules per grade, department, or individual employee.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F0FDF4">✅</div><div><h5>Multi-Level Approval Workflow</h5><p>Employee → Manager → HR chain with email/WhatsApp notifications at every step. No missed requests.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#FFF7ED">⚖️</div><div><h5>Automatic Leave Accrual</h5><p>Monthly or yearly credits applied per policy automatically — no manual balance updates needed.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F5F3FF">💸</div><div><h5>Leave Encashment &amp; LOP</h5><p>Encashment calculations and Loss of Pay automatically fed into the payroll run.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F0FDFA">📅</div><div><h5>Team Leave Calendar</h5><p>Visual calendar showing who's absent — prevents critical dates being left understaffed.</p></div></div>
+      </div>
+      <div class="hmock">
+        <div class="hm-bar"><span class="hm-title">Leave Overview</span><span class="hm-badge">LIVE</span></div>
+        <div class="hm-card"><div class="hm-lbl">PENDING APPROVALS</div><div class="hm-val" style="color:#FCD34D">7</div><div class="hm-sub">Requires manager action today</div></div>
+        <div><div style="font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.8px;margin-bottom:7px">LEAVE BALANCE — Engineering</div>
+          <div class="hm-row"><span class="hm-rl">Casual Leave</span><span class="hm-rr">4.5 days avg</span></div>
+          <div class="hm-row"><span class="hm-rl">Earned Leave</span><span class="hm-rr">11 days avg</span></div>
+          <div class="hm-row"><span class="hm-rl">Sick Leave</span><span class="hm-rr">6 days avg</span></div>
+        </div>
+        <div class="hm-bwrap"><div class="hm-bl"><span>Leave Utilisation (YTD)</span><span>62%</span></div><div class="hm-bt"><div class="hm-bf" style="width:62%;background:linear-gradient(90deg,#8B5CF6,#7C3AED)"></div></div></div>
+      </div>
+    </div>
+    <div class="htab-c" id="ht-py">
+      <div class="hfeats">
+        <div class="hfeat"><div class="hfeat-ic" style="background:#EFF6FF">🏗</div><div><h5>Flexible Salary Structures</h5><p>Basic, HRA, DA, allowances, and deductions per grade, department, or individual employee.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F0FDF4">⚡</div><div><h5>One-Click Bulk Processing</h5><p>Run payroll for your entire company in minutes. Review variances, approve, disburse.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#FFF7ED">🌍</div><div><h5>Multi-Currency Payroll</h5><p>Pay employees in different countries in their local currency with live exchange rates.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F5F3FF">🧾</div><div><h5>Automated Payslip Delivery</h5><p>Password-protected payslips emailed to every employee automatically after approval.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F0FDFA">💳</div><div><h5>Loan, Advance &amp; EMI Deductions</h5><p>Track advances and loans with automatic EMI deductions each payroll cycle until cleared.</p></div></div>
+      </div>
+      <div class="hmock">
+        <div class="hm-bar"><span class="hm-title">March 2025 Payroll</span><span class="hm-badge">PROCESSED</span></div>
+        <div class="hm-card"><div class="hm-lbl">NET PAYOUT</div><div class="hm-val">₹48,64,200</div><div class="hm-sub">158 employees · 0 errors</div></div>
+        <div class="hm-2"><div class="hm-card"><div class="hm-lbl">GROSS</div><div class="hm-val">₹62.4L</div></div><div class="hm-card"><div class="hm-lbl">DEDUCTIONS</div><div class="hm-val">₹13.8L</div></div></div>
+        <div><div class="hm-row"><span class="hm-rl">PF (Emp + Employer)</span><span class="hm-rr">₹5.2L</span></div><div class="hm-row"><span class="hm-rl">TDS / Income Tax</span><span class="hm-rr">₹6.1L</span></div><div class="hm-row"><span class="hm-rl">Loan EMI</span><span class="hm-rr">₹1.4L</span></div><div class="hm-row"><span class="hm-rl">LOP (3 employees)</span><span class="hm-rr">₹1.1L</span></div></div>
+      </div>
+    </div>
+    <div class="htab-c" id="ht-co">
+      <div class="hfeats">
+        <div class="hfeat"><div class="hfeat-ic" style="background:#EFF6FF">🛡</div><div><h5>PF / EPF Automation</h5><p>Employer and employee contributions auto-calculated and challan-ready every month.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F0FDF4">🏥</div><div><h5>ESI Management</h5><p>Eligibility checks, contribution calculations, and ESI return file generation — fully automated.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#FFF7ED">📑</div><div><h5>TDS &amp; Form 16</h5><p>Auto-compute TDS per employee, generate Form 16 certificates, manage investment declarations.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F5F3FF">📊</div><div><h5>Statutory Reports</h5><p>PF ECR, ESI returns, PT returns, Form 24Q in government file formats — ready to upload.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F0FDFA">🌐</div><div><h5>Multi-Country Compliance</h5><p>Different statutory rules per country — India, UAE, or any other — within the same system.</p></div></div>
+      </div>
+      <div class="hmock">
+        <div class="hm-bar"><span class="hm-title">Compliance Dashboard</span><span class="hm-badge">ALL CLEAR</span></div>
+        <div class="hm-card"><div class="hm-lbl">COMPLIANCE SCORE</div><div class="hm-val" style="color:#34D399">98 / 100</div><div class="hm-sub">No penalties in 24 months</div></div>
+        <div><div class="hm-row"><span class="hm-rl"><span class="sdot" style="background:#10B981"></span>PF ECR — Mar 2025</span><span class="hm-rr" style="color:#34D399">Filed</span></div><div class="hm-row"><span class="hm-rl"><span class="sdot" style="background:#10B981"></span>ESI Return — Mar 2025</span><span class="hm-rr" style="color:#34D399">Filed</span></div><div class="hm-row"><span class="hm-rl"><span class="sdot" style="background:#10B981"></span>TDS Challan — Q4</span><span class="hm-rr" style="color:#34D399">Filed</span></div><div class="hm-row"><span class="hm-rl"><span class="sdot" style="background:#F59E0B"></span>Form 16 — FY 2024-25</span><span class="hm-rr" style="color:#FCD34D">Due Apr 30</span></div></div>
+      </div>
+    </div>
+    <div class="htab-c" id="ht-an">
+      <div class="hfeats">
+        <div class="hfeat"><div class="hfeat-ic" style="background:#EFF6FF">📊</div><div><h5>Live Headcount &amp; Org Charts</h5><p>Real-time headcount by department, location, grade, and gender with drill-down capability.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F0FDF4">📉</div><div><h5>Attrition &amp; Retention Reports</h5><p>Monthly attrition tracking, high-risk departments, and retention trends by tenure band.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#FFF7ED">💰</div><div><h5>Payroll Cost Analysis</h5><p>Monthly, quarterly, yearly cost trends per department, grade, and location for budgeting.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F5F3FF">🎯</div><div><h5>HR KPI Dashboard</h5><p>Cost per employee, leave liability, bench strength — all critical HR metrics in one executive view.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F0FDFA">📤</div><div><h5>Excel &amp; PDF Export</h5><p>Any report downloadable instantly in Excel or PDF format for presentations.</p></div></div>
+      </div>
+      <div class="hmock">
+        <div class="hm-bar"><span class="hm-title">HR Analytics</span><span class="hm-badge">LIVE</span></div>
+        <div class="hm-2"><div class="hm-card"><div class="hm-lbl">HEADCOUNT</div><div class="hm-val">158</div><div class="hm-sub">+12 this month</div></div><div class="hm-card"><div class="hm-lbl">ATTRITION</div><div class="hm-val" style="color:#34D399">4.2%</div><div class="hm-sub">Industry: 9.1%</div></div></div>
+        <div class="hm-bwrap"><div class="hm-bl"><span>Engineering (62)</span><span>39%</span></div><div class="hm-bt"><div class="hm-bf" style="width:70%;background:linear-gradient(90deg,#3B82F6,#1D4ED8)"></div></div></div>
+        <div class="hm-bwrap"><div class="hm-bl"><span>Sales (38)</span><span>24%</span></div><div class="hm-bt"><div class="hm-bf" style="width:40%;background:linear-gradient(90deg,#8B5CF6,#7C3AED)"></div></div></div>
+        <div class="hm-bwrap"><div class="hm-bl"><span>Operations (34)</span><span>21%</span></div><div class="hm-bt"><div class="hm-bf" style="width:36%;background:linear-gradient(90deg,#10B981,#059669)"></div></div></div>
+      </div>
+    </div>
+    <div class="htab-c" id="ht-ex">
+      <div class="hfeats">
+        <div class="hfeat"><div class="hfeat-ic" style="background:#EFF6FF">📝</div><div><h5>Online Resignation &amp; Notice Tracking</h5><p>Digital resignation submission with automatic notice period countdown and LWD confirmation.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F0FDF4">✅</div><div><h5>Exit Clearance Checklist</h5><p>IT, Finance, Admin, Manager — automated multi-department clearance with real-time status.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#FFF7ED">💰</div><div><h5>Full &amp; Final Settlement</h5><p>Auto-calculate gratuity, leave encashment, salary hold, and deductions for accurate F&amp;F payout.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F5F3FF">📋</div><div><h5>Exit Interview Analytics</h5><p>Digital exit forms capturing reasons for leaving — feeds attrition reports for leadership.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F0FDFA">📄</div><div><h5>Auto-Generated Letters</h5><p>Experience and relieving letters generated automatically once all clearances are complete.</p></div></div>
+      </div>
+      <div class="hmock">
+        <div class="hm-bar"><span class="hm-title">Exit Pipeline</span><span class="hm-badge">3 ACTIVE</span></div>
+        <div class="hm-card"><div class="hm-lbl">F&amp;F DUE THIS MONTH</div><div class="hm-val">₹3,42,000</div><div class="hm-sub">3 employees · due by Apr 15</div></div>
+        <div><div class="hm-row"><span class="hm-rl"><span class="sdot" style="background:#10B981"></span>IT Asset Return</span><span class="hm-rr" style="color:#34D399">Cleared</span></div><div class="hm-row"><span class="hm-rl"><span class="sdot" style="background:#10B981"></span>Manager NOC</span><span class="hm-rr" style="color:#34D399">Cleared</span></div><div class="hm-row"><span class="hm-rl"><span class="sdot" style="background:#F59E0B"></span>Finance Clearance</span><span class="hm-rr" style="color:#FCD34D">Pending</span></div><div class="hm-row"><span class="hm-rl"><span class="sdot" style="background:#6B7280"></span>F&amp;F Payment</span><span class="hm-rr" style="color:#9CA3AF">Queued</span></div></div>
+      </div>
+    </div>
+    <div class="htab-c" id="ht-mo">
+      <div class="hfeats">
+        <div class="hfeat"><div class="hfeat-ic" style="background:#EFF6FF">📱</div><div><h5>Flutter Employee Self-Service App</h5><p>Cross-platform iOS &amp; Android app built with Flutter — employees manage their own HR without bothering HR.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F0FDF4">🌴</div><div><h5>Leave Application &amp; Approval</h5><p>Apply for leave, check balances, track approval status — all from the mobile app with push notifications.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#FFF7ED">🧾</div><div><h5>Payslip Access</h5><p>View and download all payslips directly in the app — no emails, no requests to HR.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F5F3FF">📍</div><div><h5>GPS Attendance Check-in</h5><p>Field staff mark attendance from mobile with GPS validation — syncs directly to the HRMS.</p></div></div>
+        <div class="hfeat"><div class="hfeat-ic" style="background:#F0FDFA">🔔</div><div><h5>Push Notifications</h5><p>Salary credited, leave approved, holiday announcements — real-time alerts to every employee.</p></div></div>
+      </div>
+      <div class="hmock">
+        <div class="hm-bar"><span class="hm-title">ESS Mobile App</span><span class="hm-badge">FLUTTER</span></div>
+        <div class="hm-card"><div class="hm-lbl">PLATFORM</div><div class="hm-val" style="font-size:16px;margin-top:2px">iOS &amp; Android</div><div class="hm-sub">Built with Flutter · Frappe REST APIs</div></div>
+        <div><div style="font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.8px;margin-bottom:7px">EMPLOYEE FEATURES</div>
+          <div class="hm-row"><span class="hm-rl">📊 View Payslips</span><span class="hm-rr">✓</span></div>
+          <div class="hm-row"><span class="hm-rl">🌴 Apply / Track Leave</span><span class="hm-rr">✓</span></div>
+          <div class="hm-row"><span class="hm-rl">📍 GPS Check-in</span><span class="hm-rr">✓</span></div>
+          <div class="hm-row"><span class="hm-rl">🔔 Push Notifications</span><span class="hm-rr">✓</span></div>
+          <div class="hm-row"><span class="hm-rl">📋 View Leave Balance</span><span class="hm-rr">✓</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROI -->
+    <div class="roi-strip" style="margin-top:56px">
+      <div class="roi-tile bl reveal"><div class="roi-n">60%</div><div class="roi-t">HR Effort Reduced</div><div class="roi-d">Attendance, leave approvals &amp; payslip generation fully automated.</div></div>
+      <div class="roi-tile gr reveal"><div class="roi-n">100%</div><div class="roi-t">Payroll Accuracy</div><div class="roi-d">Zero manual errors — every salary, deduction, and statutory contribution verified automatically.</div></div>
+      <div class="roi-tile vi reveal"><div class="roi-n">&lt;2 hrs</div><div class="roi-t">Full Payroll Run</div><div class="roi-d">Down from 3–5 days of manual Excel work.</div></div>
+      <div class="roi-tile am reveal"><div class="roi-n">₹0</div><div class="roi-t">Compliance Penalties</div><div class="roi-d">Automated PF, ESI &amp; TDS — no missed deadlines, no fines.</div></div>
+      <div class="roi-tile cy reveal"><div class="roi-n">1 Day</div><div class="roi-t">Employee Onboarding</div><div class="roi-d">From offer accepted to fully set up — docs, access, payroll — in one day.</div></div>
+      <div class="roi-tile ro reveal"><div class="roi-n">Real-time</div><div class="roi-t">HR Visibility</div><div class="roi-d">Live dashboards for leadership — headcount, cost, attrition, compliance, always on.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <div class="inner">
+    <p class="sec-label">More Projects</p>
+    <h2 class="sec-title">Across Industries</h2>
+    <p class="sec-sub">Manufacturing, finance, healthcare, SaaS — every project is a different problem, solved from scratch.</p>
+    <div class="proj-grid">
+      <div class="proj-card reveal">
+        <div class="proj-top"><div><div class="proj-ind">Manufacturing · ERP</div><h3>Cardamom Processing ERP</h3></div><div class="proj-ico" style="background:#F0FFF4">🌿</div></div>
+        <div class="proj-body"><p>Full Manufacturing ERP for a cardamom processing operation — BOMs, Work Orders, batch tracking, and production reporting.</p><ul class="proj-hl"><li>Multi-level BOMs from raw to finished goods</li><li>Automated Work Orders &amp; Job Cards</li><li>Yield, wastage &amp; consumption reports</li></ul><div class="proj-tech"><span>ERPNext</span><span>Python</span><span>Frappe</span><span>MariaDB</span></div></div>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-top"><div><div class="proj-ind">Textile · Costing Engine</div><h3>Custom Costing Engine</h3></div><div class="proj-ico" style="background:#FFFBEB">🧵</div></div>
+        <div class="proj-body"><p>Formula-driven product costing based on GSM, fabric size, and material consumption — eliminated manual spreadsheet costing entirely.</p><ul class="proj-hl"><li>Per-factory cost structure configuration</li><li>Integrated with Sales, Mfg &amp; Inventory</li><li>Real-time margin dashboards</li></ul><div class="proj-tech"><span>ERPNext</span><span>Python</span><span>Custom Scripts</span></div></div>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-top"><div><div class="proj-ind">Finance · Accounting</div><h3>Enterprise Accounting System</h3></div><div class="proj-ico" style="background:#FFF5F5">📊</div></div>
+        <div class="proj-body"><p>ERPNext as a dedicated accounting platform — automated GL posting, reconciliation, multi-currency, and full legacy migration.</p><ul class="proj-hl"><li>Automated invoice posting &amp; reconciliation</li><li>Multi-currency international payments</li><li>AR, AP &amp; Cash Flow dashboards</li></ul><div class="proj-tech"><span>ERPNext</span><span>Python</span><span>REST API</span><span>MariaDB</span></div></div>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-top"><div><div class="proj-ind">Healthcare · Sales</div><h3>Surgical Equipment Sales Platform</h3></div><div class="proj-ico" style="background:#F0F9FF">🏥</div></div>
+        <div class="proj-body"><p>Video-driven product showcase platform with ERPNext CRM, Exotel telephony, and React.js frontend for automated sales outreach.</p><ul class="proj-hl"><li>React.js frontend + ERPNext CRM backend</li><li>Exotel automated calling &amp; SMS campaigns</li><li>Lead conversion analytics dashboards</li></ul><div class="proj-tech"><span>React.js</span><span>ERPNext</span><span>Exotel</span><span>Python</span></div></div>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-top"><div><div class="proj-ind">SaaS · Cloud Platform</div><h3>Market On Cloud</h3></div><div class="proj-ico" style="background:#F5F3FF">☁️</div></div>
+        <div class="proj-body"><p>Senior Frappe engineer on a cloud SaaS platform — REST API design, performance optimisation, test coverage, and sprint-based delivery.</p><ul class="proj-hl"><li>REST API design for third-party integrations</li><li>Legacy code refactoring for performance</li><li>Unit &amp; integration test coverage</li></ul><div class="proj-tech"><span>Python</span><span>Frappe</span><span>JavaScript</span><span>MariaDB</span></div></div>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-top"><div><div class="proj-ind">Vue.js · CRM Dashboard</div><h3>Frappe CRM + Vue.js Dashboards</h3></div><div class="proj-ico" style="background:#F0FDF4">🤝</div></div>
+        <div class="proj-body"><p>Frappe CRM customised for sales pipelines with Vue.js reactive dashboards — giving management real-time operational visibility.</p><ul class="proj-hl"><li>Custom lead pipelines &amp; deal stages</li><li>Vue.js dashboards on Frappe REST APIs</li><li>WhatsApp &amp; email automation from CRM</li></ul><div class="proj-tech"><span>Vue.js</span><span>Frappe CRM</span><span>Python</span><span>REST API</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ENGAGEMENT MODELS ── -->
+<section id="engage">
+  <div class="inner">
+    <p class="sec-label">Work With Me</p>
+    <h2 class="sec-title">How to Engage</h2>
+    <p class="sec-sub">Three clear ways to work together — pick what fits your project or team best.</p>
+    <div class="engage-grid">
+      <div class="engage-card reveal">
+        <div class="engage-icon">🎯</div>
+        <h3>Fixed-Price Project</h3>
+        <p class="engage-sub">Best for: defined scope ERP implementations, custom modules, or integrations with clear requirements.</p>
+        <ul class="engage-list">
+          <li>Detailed scope discussion &amp; proposal upfront</li>
+          <li>Milestone-based delivery &amp; payments</li>
+          <li>Full handover with documentation</li>
+          <li>30-day post-launch support included</li>
+        </ul>
+        <a href="https://wa.me/917218018485" target="_blank" class="engage-cta">Start with WhatsApp ↗</a>
+      </div>
+      <div class="engage-card featured-engage reveal">
+        <div class="engage-icon">🔄</div>
+        <h3>Monthly Retainer</h3>
+        <p class="engage-sub">Best for: ongoing ERPNext development, feature additions, maintenance, and priority support.</p>
+        <ul class="engage-list">
+          <li>Dedicated hours per month</li>
+          <li>Priority response (same-day)</li>
+          <li>Ongoing customisation &amp; new modules</li>
+          <li>Server monitoring &amp; upgrades</li>
+          <li>Monthly progress reports</li>
+        </ul>
+        <a href="/cdn-cgi/l/email-protection#7a090d1b0a141316541d540a1b0d1b0843433a1d171b13165419151745090f18101f190e47281f0e1b13141f085a3f140b0f130803" class="engage-cta">Discuss Retainer →</a>
+      </div>
+      <div class="engage-card reveal">
+        <div class="engage-icon">💼</div>
+        <h3>Full-Time / Contract Role</h3>
+        <p class="engage-sub">Best for: companies looking for a senior ERPNext developer or technical lead to join the team.</p>
+        <ul class="engage-list">
+          <li>5+ years ERPNext &amp; Frappe expertise</li>
+          <li>Team lead &amp; code review experience</li>
+          <li>React.js, Vue.js, Flutter on top of Frappe</li>
+          <li>Available for remote or hybrid roles</li>
+        </ul>
+        <a href="https://www.linkedin.com/in/swapnil-pawar-2079731a0" target="_blank" class="engage-cta">View LinkedIn ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section id="process">
+  <div class="inner">
+    <p class="sec-label">How I Work</p>
+    <h2 class="sec-title">From Idea to Production</h2>
+    <p class="sec-sub">A structured approach that delivers on time, every time — no surprises.</p>
+    <div class="process-steps">
+      <div class="step"><div class="step-num">01</div><div class="step-ico">🎯</div><h4>Discover &amp; Design</h4><p>Deep requirement workshops. I map your processes, identify gaps, and design the ERPNext architecture before writing a single line of code.</p></div>
+      <div class="step"><div class="step-num">02</div><div class="step-ico">⚙️</div><h4>Build &amp; Integrate</h4><p>Full-stack development — Frappe Doctypes, Python controllers, React/Vue.js frontend, Flutter mobile, and third-party integrations.</p></div>
+      <div class="step"><div class="step-num">03</div><div class="step-ico">🚀</div><h4>Deploy &amp; Optimise</h4><p>End-to-end deployment on your cloud (AWS, Azure, DigitalOcean, Frappe Cloud) with SSL, backups, and performance tuning.</p></div>
+      <div class="step"><div class="step-num">04</div><div class="step-ico">📈</div><h4>Train &amp; Support</h4><p>Full user training, documentation, and post-launch support. I ensure the system is actually used — not just delivered.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section id="faq">
+  <div class="inner">
+    <p class="sec-label">Common Questions</p>
+    <h2 class="sec-title">FAQ</h2>
+    <p class="sec-sub">Answers to what clients usually ask before starting a project.</p>
+    <div class="faq-grid">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you work remotely? <span class="faq-arrow">+</span></button><div class="faq-a"><p>Yes, 100% remote. I've successfully delivered projects for clients across India and internationally without ever needing to be on-site. I use structured communication, milestone check-ins, and shared project tracking to keep everything on schedule.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How long does an ERPNext implementation take? <span class="faq-arrow">+</span></button><div class="faq-a"><p>It depends on scope. A focused module (e.g., Accounting or HR) typically takes 4–8 weeks. A full ERP implementation covering multiple modules usually runs 3–5 months. I provide a detailed timeline after the initial requirement discussion.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you provide post-launch support? <span class="faq-arrow">+</span></button><div class="faq-a"><p>Yes. All fixed-price projects include 30 days of post-launch support at no extra cost. For ongoing support and new features, I offer monthly retainer packages. I don't disappear after going live.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can you work with our existing ERPNext setup? <span class="faq-arrow">+</span></button><div class="faq-a"><p>Absolutely. I regularly take over existing ERPNext instances — adding custom modules, fixing issues, upgrading versions, or building new integrations. I'll audit the existing setup first and give you an honest assessment.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you build mobile apps as part of ERP projects? <span class="faq-arrow">+</span></button><div class="faq-a"><p>Yes. I build Flutter mobile apps (iOS &amp; Android) that connect to Frappe/ERPNext backends via REST APIs. This includes the Frappe HRMS ESS app, CRM mobile access, and custom apps for field teams. It can be scoped as part of the ERP project or as a separate engagement.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What's the best way to start a project with you? <span class="faq-arrow">+</span></button><div class="faq-a"><p>The fastest way is WhatsApp (+91 72180 18485) — I typically respond within 4 hours. We'll start with a 30-minute call to discuss your requirements, after which I'll send a proposal with scope, timeline, and pricing within 48 hours.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="contact-inner">
+    <p class="sec-label">Let's Build Something</p>
+    <h2 class="sec-title">Ready to Start?</h2>
+    <p class="sec-sub">Whether it's a new ERP, a custom HRMS, Frappe CRM, or a Flutter app — let's talk. No fluff, just a straight conversation about your project.</p>
+    <div class="contact-cards">
+      <a href="/cdn-cgi/l/email-protection#0c7f7b6d7c626560226b227c6d7b6d7e35354c6b616d6560226f6361" class="cc"><div class="cc-ico">✉️</div><div><div class="cc-lbl">EMAIL</div><div class="cc-val"><span class="__cf_email__" data-cfemail="d1a2a6b0a1bfb8bdffb6ffa1b0a6b0a3e8e891b6bcb0b8bdffb2bebc">[email&#160;protected]</span></div></div></a>
+      <a href="tel:+917218018485" class="cc"><div class="cc-ico">📞</div><div><div class="cc-lbl">PHONE</div><div class="cc-val">+91 72180 18485</div></div></a>
+      <a href="https://www.linkedin.com/in/swapnil-pawar-2079731a0" target="_blank" class="cc"><div class="cc-ico">💼</div><div><div class="cc-lbl">LINKEDIN</div><div class="cc-val">swapnil-pawar</div></div></a>
+      <a href="https://www.transcendstore.com" target="_blank" class="cc"><div class="cc-ico">🌐</div><div><div class="cc-lbl">LIVE PROJECT</div><div class="cc-val">transcendstore.com</div></div></a>
+    </div>
+    <a href="https://wa.me/917218018485?text=Hi%20Swapnil%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project" target="_blank" class="wa-big">💬 Message on WhatsApp — fastest response</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Swapnil Pawar · ERPNext · Frappe · React.js · Vue.js · Flutter · Akola, Maharashtra</p>
+  <span>Open to Freelance &amp; Full-time Roles</span>
+</footer>
+
+<script>
+// Force all reveals visible IMMEDIATELY — before DOMContentLoaded
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('.reveal').forEach(function(el){
+    el.style.cssText+='opacity:1!important;transform:none!important;visibility:visible!important';
+    el.classList.add('on');
+  });
+  // HRMS tabs
+  window.htab=function(id,el){
+    document.querySelectorAll('.htab-c').forEach(function(t){t.classList.remove('active')});
+    document.querySelectorAll('.htab').forEach(function(t){t.classList.remove('active')});
+    document.getElementById('ht-'+id).classList.add('active');
+    el.classList.add('active');
+  };
+  // FAQ accordion
+  window.toggleFaq=function(btn){
+    var item=btn.closest('.faq-item');
+    var wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open')});
+    if(!wasOpen)item.classList.add('open');
+  };
+});
+// Also run immediately in case DOM is already ready
+if(document.readyState!=='loading'){
+  document.querySelectorAll('.reveal').forEach(function(el){
+    el.style.cssText+='opacity:1!important;transform:none!important';
+  });
+}
+</script>
+</body>
+</html>
